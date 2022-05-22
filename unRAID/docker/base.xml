@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name></Name>
+    <Repository></Repository>
+    <Registry></Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Support></Support>
+    <Project></Project>
+    <Overview></Overview>
+    <WebUI></WebUI>
+    <TemplateURL/>
+    <Icon>/plugins/dynamix.docker.manager/images/question.png</Icon>
+    <ExtraParams/>
+    <PostArgs/>
+    <DonateText/>
+    <DonateLink/>
+</Container>
+
+<!--
+
+Default metadata:
+
+    Name - The name for the container, preferably in lowercase.
+        idrac6
+
+    Repository - The name of the image to pull from dockerHub (other repositories work). e.g.
+        domistyle/idrac6
+
+    Registry - Link to the dockerHub page for this container. e.g.
+        https://hub.docker.com/r/domistyle/idrac6/
+
+    Network - Usually bridge if not specified by the image maintainer
+        bridge
+
+    Privileged - Usally false if not specified by image maintainer or you know what your doing.
+        false
+
+    Support - A link to a support thread on the unraid forums for the container
+
+    Project - Link to the GitHub page (or the homepage of the project) e.g.
+        https://github.com/DomiStyle/docker-idrac6/
+
+    Overview - Basic description of the project. e.g.
+        Allows access to the iDRAC 6 console without installing Java or messing with Java Web Start. Java is only run inside of the container and access is provided via web interface or directly with VNC.
+
+    WebUI - Which container-port a webui might be on. e.g.
+        http://[IP]:[PORT:5800] Unraid will translate this string to the IP of the server, and the host-port set for container-port 5800
+
+    TemplateURL - Url to the template e.g.
+        https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/<container-name>.xml and replace <container-name> with the actual name of the container (again, in lowercase).
+
+    Icon - URL to an icon, personally I prefer them in png. It has to be loaded over https. e.g.
+        https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/chevereto.png chevereto icon
+
+    ExtraParams Parameters - sent with the docker run command. e.g.
+        --restart unless-stopped
+
+    PostArgs - Command to run inside the container after start. e.g.
+        /bin/sh -c 'apk update && apk add ipmitool && telegraf'
+
+    DonateText Text - to show with the donate button.
+
+    DonateLink - URL for donations.
+
+    DonateImg - URL to donation image.
+
+Warning: Has to be a raw link for GitHub.
+
+
+Default Config syntax:
+
+    <Config Name="" Target="" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false"/>
+
+Add a Volume
+    Target - The container path for the volume. e.g.
+        /config
+
+    Mode - What permissions to use for the volume. e.g.
+        rw - Read-Write
+        ro - Read-Only
+        Slave options also supported
+
+    Type - Always Path. e.g.
+        Path
+
+Add a Variable
+    Target - The variable. e.g.
+        IDRAC_HOST
+
+    Type - Always Variable. e.g.
+        Variable
+
+Add a Port
+    Target - The container port. e.g.
+        80
+
+    Type - Always Port. e.g.
+        Port
+
+Shared attributes
+    Name - The name that shows in the Unraid template manager. e.g.
+        Appdata, PUID, WebUI
+
+    Description - A more detailed description on this Config. e.g
+        Appdata location, PUID, WebUI
+
+    Default - Suggested value for the Config. e.g.
+        /mnt/user/appdata/idrac, 99, 8080
+
+    Display - How the volume is shown to the user.
+        always - Always show the volume, can be edited and deleted in basic view.
+        always-hide - Always show the volume, can't be edited and deleted in basic view.
+        advanced - Shows when the user presses "Show more settings ...", can be edited and deleted in basic view.
+        advanced-hide - Shows when the user presses "Show more settings ...", can't be edited and deleted in basic view.
+
+    Required - If the user is able to continue without specifying the value.
+        true - If the value is required to be entered.
+        false - If the value is not rewuired to be entered.
+
+    Mask - If the value should be masked behind asterisks, only really usefull on variables.
+        true - Hides what is entered.
+        false - Shows what is entered in clear text.
+
+Additional tags
+    Beta - Gives the application a warning in CA with the following text. "This application has been marked as being Beta. This does NOT neccessarily mean that there will be issues.." e.g.
+        <Beta>true</Beta> or <Beta>false</Beta>
+
+    Branch - Prompts the user to choose a dockerHub tag e.g.
+        linuxserver/emby.xml
+
+Neat tricks
+    The template manager also support setting a set of predefined values,
+    often uses in conjunction with variables that expect bools.Defined by separating the values with |. e.g.
+        true|false - Has to be set in the default attribute.
+
+-->
