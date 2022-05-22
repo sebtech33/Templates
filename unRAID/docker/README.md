@@ -4,12 +4,74 @@ Simple explanation for all the options when creating a xml template for Communit
 
 &nbsp;
 
-Get the Community Applications Plugin:
->[unRAID Community Applications](https://forums.unraid.net/topic/38582-plug-in-community-applications/)
+&nbsp;
 
 &nbsp;
 
+<details>
+<summary> Great to remember Markdown things </summary>
+
+Anchor  
 [Create a docker network](#create-a-docker-network)
+
+New line  
+`&nbsp;`
+
+Dropdown
+
+```dropdown
+<details>
+<summary> This is the name for the dropdown </summary>
+What should be inside the dropdown goes here.
+</details>
+```
+
+Block  
+`This is a block`
+
+Code block
+
+```xml code language
+This wil have code highligt and language support.
+Like this:
+
+<Code Block="true"/>
+```
+
+Table with Code block + highligh and language support.
+Has to be written in RAW HTML sadly.
+
+<table>
+<tr>
+  <td> Code </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  ```xml
+  <Xml Code_highligh="true"/>
+  ```
+
+  </td>
+  <td> A description of the code. </td>
+</tr>
+
+</table>
+
+</details>
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+This is not needed but recommended.
+
+>[How to get the unRAID Community Applications plugin](https://forums.unraid.net/topic/38582-plug-in-community-applications/)  
+>[Check out the unRAID Community Apps web version](https://unraid.net/community/apps)
+
+&nbsp;
 
 ## Template example
 
@@ -86,6 +148,9 @@ Features:&#xD;
 
 ## Base XML
 
+<details>
+<summary>Show the base XML</summary>
+
 ```xml
 <?xml version="1.0"?>
 <Container version="2">
@@ -107,24 +172,24 @@ Features:&#xD;
 </Container>
 ```
 
-&nbsp;
-
-## Options
-
----
+</details>
 
 &nbsp;
 
+## Template Options
+
 &nbsp;
 
-| Name | Example | Description |
+&nbsp;
+
+| Option | Example | Description |
 | - | - | - |
-| Name | idrac6 | The name for the container, preferably in lowercase.
-| Repository | domistyle/idrac6 | The name of the image to pull from dockerHub (other repositories work. e.g. ghcr.io/CONTAINER_NAME lscr.io/CONTAINER_NAME)
+| Container name | idrac6 | The name for the container, preferably in lowercase.
+| Container Repository | domistyle/idrac6 | The name of the image to pull from dockerHub (other repositories work. e.g. ghcr.io/CONTAINER_NAME lscr.io/CONTAINER_NAME)
 
 &nbsp;
 
-### Name
+### Template Name
 
 The name for the container, preferably in lowercase. e.g.
 
@@ -132,7 +197,7 @@ The name for the container, preferably in lowercase. e.g.
 
 &nbsp;
 
-### Repository
+### Template Repository
 
 The name of the image to pull from dockerHub (other repositories work). e.g.
 
@@ -140,7 +205,7 @@ The name of the image to pull from dockerHub (other repositories work). e.g.
 
 &nbsp;
 
-### Registry
+### Template Registry
 
 Link to the dockerHub page for this container. e.g.
 
@@ -148,7 +213,7 @@ Link to the dockerHub page for this container. e.g.
 
 &nbsp;
 
-### Network
+### Template Network
 
 Usually bridge if not specified by the image maintainer
 
@@ -166,7 +231,7 @@ For custom docker networks go to [Create a docker network](#create-a-docker-netw
 
 &nbsp;
 
-### Privileged
+### Template Privileged
 
 > :warning: Be carefull with this!
 
@@ -179,13 +244,13 @@ Options [default = `false`]
 
 &nbsp;
 
-### Support
+### Template Support
 
 A link to a support thread on the unraid forums for the container
 
 &nbsp;
 
-### Project
+### Template Project
 
 Link to the GitHub page (or the homepage of the project) e.g.
 
@@ -193,7 +258,7 @@ Link to the GitHub page (or the homepage of the project) e.g.
 
 &nbsp;
 
-### Overview
+### Template Overview
 
 Basic description of the project. e.g.
 
@@ -201,7 +266,7 @@ Basic description of the project. e.g.
 
 &nbsp;
 
-### WebUI
+### Template WebUI
 
 Which container-port a webui might be on. e.g.
 
@@ -210,7 +275,7 @@ Which container-port a webui might be on. e.g.
 
 &nbsp;
 
-### TemplateURL
+### Template TemplateURL
 
 Url to the template e.g.
 
@@ -219,7 +284,7 @@ Url to the template e.g.
 
 &nbsp;
 
-### Icon
+### Template Icon
 
 URL to an icon, personally I prefer them in png. It has to be loaded over https. e.g.
 
@@ -228,7 +293,7 @@ URL to an icon, personally I prefer them in png. It has to be loaded over https.
 
 &nbsp;
 
-### ExtraParams Parameters
+### Template ExtraParams Parameters
 
 Set with the docker run command. e.g.
 
@@ -236,7 +301,7 @@ Set with the docker run command. e.g.
 
 &nbsp;
 
-### PostArgs
+### Template PostArgs
 
 Command to run inside the container after start. e.g.
 
@@ -244,30 +309,27 @@ Command to run inside the container after start. e.g.
 
 &nbsp;
 
-### DonateText Text
+### Template DonateText Text
 
 To show with the donate button.
 
 &nbsp;
 
-### DonateLink
+### Template DonateLink
 
 URL for donations.
 
 &nbsp;
 
-### DonateImg
+### Template DonateImg
 
 URL to donation image.
 
 &nbsp;
 
->:warning: GitHub link it has to be a raw link! e.g.  
-<https://raw.githubusercontent.com/>
-
 &nbsp;
 
-## Full config syntax
+## Full Config syntax
 
 ---
 
@@ -392,9 +454,58 @@ The only option for "Type" is always `Port` for a port.
 
 &nbsp;
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 ## Shared attributes
 
----
+&nbsp;
+
+&nbsp;
+
+### Name
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `NAME`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Config Name="NAME"/>
+  ```
+
+  </td>
+  <td> Where NAME is change with a short explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows on the left side in the unRAID template manager. </td>
+</tr>
+</table>
+
+<details>
+<summary> Examples for NAME </summary>
+TODO add image of unRAID to show this
+
+- WEBUI
+- APPDATA
+- PUID
+
+</details>
 
 Name - The name that shows in the Unraid template manager. e.g.
     Appdata, PUID, WebUI
@@ -405,21 +516,177 @@ Description - A more detailed description on this Config. e.g
 Default - Suggested value for the Config. e.g.
     /mnt/user/appdata/idrac, 99, 8080
 
-Display - How the volume is shown to the user.
-    always - Always show the Volume/Port/Variable, can be edited and deleted in basic view.
-    always-hide - Always show the Volume/Port/Variable, can't be edited and deleted in basic view.
-    advanced - Shows when the user presses "Show more settings ...", can be edited and deleted in basic view.
-    advanced-hide - Shows when the user presses "Show more settings ...", can't be edited and deleted in basic view.
+&nbsp;
 
-Required - If the user is able to continue without specifying the value.
-    true - If the value is required to be entered.
-    false - If the value is not rewuired to be entered.
+&nbsp;
 
-Mask - If the value should be masked behind asterisks, only really usefull on variables.
-    true - Hides what is entered.
-    false - Shows what is entered in clear text.
+&nbsp;
 
-Additional tags
+&nbsp;
+
+### Display
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+
+<tr>
+  <td>
+
+  `always`
+
+  </td>
+
+  <td>
+
+  ```xml
+  <Config Display="always"/>
+  ```
+
+  </td>
+  <td> Always show the Volume/Port/Variable, can be edited or deleted in basic view. </td>
+<tr>
+  <td>
+  
+  `always-hide`
+
+  </td>
+  <td>
+
+  ```xml
+  <Config Display="always-hide"/>
+  ```
+
+  </td>
+  <td> Always show the Volume/Port/Variable, can't be edited or deleted in basic view. </td>
+</tr>
+
+<tr>
+  <td>
+
+   `advanced`
+
+  </td>
+  <td>
+
+  ```xml
+  <Config Display="advanced"></Config>
+  ```
+
+  </td>
+  <td> Shows when the user presses "Show more settings ...", can be edited or deleted in basic view. </td>
+</tr>
+
+<tr>
+  <td>
+
+   `advanced-hide`
+
+  </td>
+  <td>
+
+  ```xml
+  <Config Display="advanced-hide"></Config>
+  ```
+
+  </td>
+  <td> Shows when the user presses "Show more settings ...", can't be edited or deleted in basic view. </td>
+</tr>
+</table>
+
+### Required
+
+This just uses a bool to make the field required or not.
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `true`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Config Required="true"/>
+  ```
+
+  </td>
+  <td> Value is required to be entered. </td>
+</tr>
+<tr>
+  <td>
+  
+  `false`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Config Required="false"/>
+  ```
+
+  </td>
+  <td> Value is not required to be entered. </td>
+</tr>
+</table>
+
+### Mask
+
+Allows value that is entered in the template to be hidden. This is usefull to hide sensitive information like passwords.
+
+TODO picture of unirad showing this
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `true`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Config Mask="true"/>
+  ```
+
+  </td>
+  <td> Shows what is entered as a vaule. </td>
+</tr>
+<tr>
+  <td>
+  
+  `false`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Config Mask="false"/>
+  ```
+
+  </td>
+  <td> Hides what is entered as a vaule. </td>
+</tr>
+</table>
+
+### Additional tags
+
+Need more info on these.
+
 Beta - Gives the application a warning in CA with the following text. "This application has been marked as being Beta. This does NOT neccessarily mean that there will be issues.." e.g.
 
 ```xml
@@ -428,6 +695,10 @@ Beta - Gives the application a warning in CA with the following text. "This appl
 
 Branch - Prompts the user to choose a dockerHub tag e.g.
     linuxserver/emby.xml
+
+&nbsp;
+
+&nbsp;
 
 &nbsp;
 
@@ -470,79 +741,7 @@ Where DOCKER_NETWORK_NAME is the name you want for the network
 
 &nbsp;
 
-&nbsp;
-
 ## References
 
 >[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)  
 >[unRAID Forums](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)  
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-### Neat Tricks
-
-Option | Example | Description
----    | ---     | ---
-always | `Display="always"` | Always show the Volume/Port/Variable, can be edited and deleted in basic view.
-always-hide | `Display="always-hide"` | Always show the Volume/Port/Variable, can't be edited and deleted in basic view.
-advanced | `Display="advanced"` | Shows when the user presses "Show more settings ...", can be edited and deleted in basic view.
-advanced-hide |<pre lang="xml"><Config Display="advanced-hide"></Config></pre> | Shows when the user presses "Show more settings ...", can't be edited and deleted in basic view.
-
-<table>
-<tr>
-  <td> Option </td>
-  <td> Example </td>
-  <td> Description </td>
-</tr>
-
-<tr>
-  <td>
-
-  `always`
-
-  </td>
-
-  <td>
-
-  ```xml
-  <Config Display="always"/>
-  ```
-
-  </td>
-  <td> Always show the Volume/Port/Variable, can be edited and deleted in basic view. </td>
-<tr>
-  <td>
-  
-  `always-hide`
-
-  </td>
-
-  <td>
-
-  ```xml
-  <Config Display="always-hide"/>
-  ```
-
-  </td>
-
-  <td> Always show the Volume/Port/Variable, can't be edited and deleted in basic view. </td>
-</tr>
-<tr>
-<td> 500 </td>
-<td>
-Internal Server Error
-</td>
-</tr>
-</table>
