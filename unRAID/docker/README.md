@@ -406,8 +406,8 @@ Default - Suggested value for the Config. e.g.
     /mnt/user/appdata/idrac, 99, 8080
 
 Display - How the volume is shown to the user.
-    always - Always show the volume, can be edited and deleted in basic view.
-    always-hide - Always show the volume, can't be edited and deleted in basic view.
+    always - Always show the Volume/Port/Variable, can be edited and deleted in basic view.
+    always-hide - Always show the Volume/Port/Variable, can't be edited and deleted in basic view.
     advanced - Shows when the user presses "Show more settings ...", can be edited and deleted in basic view.
     advanced-hide - Shows when the user presses "Show more settings ...", can't be edited and deleted in basic view.
 
@@ -432,8 +432,6 @@ Branch - Prompts the user to choose a dockerHub tag e.g.
 &nbsp;
 
 ## Neat tricks
-
-### **Template predefined values aka dropdowns**
 
 ### Template predefined values aka dropdowns
 
@@ -478,3 +476,73 @@ Where DOCKER_NETWORK_NAME is the name you want for the network
 
 >[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)  
 >[unRAID Forums](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)  
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+### Neat Tricks
+
+Option | Example | Description
+---    | ---     | ---
+always | `Display="always"` | Always show the Volume/Port/Variable, can be edited and deleted in basic view.
+always-hide | `Display="always-hide"` | Always show the Volume/Port/Variable, can't be edited and deleted in basic view.
+advanced | `Display="advanced"` | Shows when the user presses "Show more settings ...", can be edited and deleted in basic view.
+advanced-hide |<pre lang="xml"><Config Display="advanced-hide"></Config></pre> | Shows when the user presses "Show more settings ...", can't be edited and deleted in basic view.
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> Example </td>
+  <td> Description </td>
+</tr>
+
+<tr>
+  <td>
+
+  `always`
+
+  </td>
+
+  <td>
+
+  ```xml
+  <Config Display="always"/>
+  ```
+
+  </td>
+  <td> Always show the Volume/Port/Variable, can be edited and deleted in basic view. </td>
+<tr>
+  <td>
+  
+  `always-hide`
+
+  </td>
+
+  <td>
+
+  ```xml
+  <Config Display="always-hide"/>
+  ```
+
+  </td>
+
+  <td> Always show the Volume/Port/Variable, can't be edited and deleted in basic view. </td>
+</tr>
+<tr>
+<td> 500 </td>
+<td>
+Internal Server Error
+</td>
+</tr>
+</table>
