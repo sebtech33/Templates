@@ -12,7 +12,8 @@ Simple explanation for all the options when creating a xml template for Communit
 <summary> Great to remember Markdown things </summary>
 
 Anchor  
-[Create a docker network](#create-a-docker-network)
+`[Create a docker network](#create-a-docker-network)`
+Like this: [Create a docker network](#create-a-docker-network)
 
 New line  
 `&nbsp;`
