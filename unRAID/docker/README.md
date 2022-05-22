@@ -435,6 +435,8 @@ Branch - Prompts the user to choose a dockerHub tag e.g.
 
 ### **Template predefined values aka dropdowns**
 
+### Template predefined values aka dropdowns
+
 The template manager support setting a set of predefined values, often uses in conjunction with variables that expect bools.
 Defined by separating the values with |.
 
