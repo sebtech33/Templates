@@ -165,7 +165,7 @@ Usually bridge if not specified by the image maintainer
   - `custom: wg0`
   - `custom: DOCKER_NETWORK`
 
-For custom docker networks go to [Create a docker network](###Create-a-docker-network).
+For custom docker networks go to [Create a docker network](#create-a-docker-network).
 
 &nbsp;
 
