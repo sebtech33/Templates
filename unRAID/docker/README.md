@@ -7,12 +7,9 @@ Simple explanation for all the options when creating a xml template for Communit
 Get the Community Applications Plugin:
 >[unRAID Community Applications](https://forums.unraid.net/topic/38582-plug-in-community-applications/)
 
-References:
-
->[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)  
->[unRAID Forums](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)
-
 &nbsp;
+
+[Create a docker network](#create-a-docker-network)
 
 ## Template example
 
@@ -171,8 +168,13 @@ For custom docker networks go to [Create a docker network](#create-a-docker-netw
 
 ### Privileged
 
-Usally false if not specified by image maintainer or you know what your doing.
+> :warning: Be carefull with this!
 
+Usally false if not specified otherwise by image maintainer or you know what your doing.
+
+Options [default = `false`]
+
+- `true`
 - `false`
 
 &nbsp;
@@ -431,9 +433,7 @@ Branch - Prompts the user to choose a dockerHub tag e.g.
 
 ## Neat tricks
 
----
-
-### Template predefined values aka dropdowns
+### **Template predefined values aka dropdowns**
 
 The template manager support setting a set of predefined values, often uses in conjunction with variables that expect bools.
 Defined by separating the values with |.
@@ -454,7 +454,7 @@ Defined by separating the values with |.
 
 &nbsp;
 
-### Create a docker network
+### **Create a docker network**
 
 For unRAID you will need to use the terminal
 
@@ -465,3 +465,14 @@ docker network create DOCKER_NETWORK_NAME
 Where DOCKER_NETWORK_NAME is the name you want for the network
 
 - So you can name one `proxy` for all your reverse proxied apps so you can use the container name as a hostname instead of using an IP.
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+## References
+
+>[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)  
+>[unRAID Forums](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)  
