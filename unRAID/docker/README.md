@@ -1,4 +1,4 @@
-# Ultimate Guide for unRAID templates (WIP)
+# Ultimate Guide for unRAID docker templates (WIP)
 
 Simple explanation for all the options when creating a xml template for Community Applications (the manual way).
 
@@ -9,15 +9,85 @@ Get the Community Applications Plugin:
 
 References:
 
->[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)
+>[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)  
+>[unRAID Forums](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)
 
 &nbsp;
+
+## Template example
+
+<details><summary>Complete template for Gluetun minimal</summary>
+
+```xml
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>gluetun-min</Name>
+  <Repository>qmcgaw/gluetun</Repository>
+  <Registry>https://hub.docker.com/r/qmcgaw/gluetun</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Project>https://github.com/qdm12/gluetun</Project>
+  <Overview>Lightweight swiss-knife-like VPN client to tunnel many different VPN Providers to VPN servers using Go, OpenVPN or Wireguard, iptables, DNS over TLS, ShadowSocks and an HTTP proxy&#xD;
+&#xD;
+Usage:&#xD;
+Add "--network=container:gluetun-vpn-client" to a docker container's "Extra Parameters"&#xD;
+(If you change the container name be sure to change "--network=container:GLUETUN-CONTAINER-NAME")&#xD;
+And set "Network Type" to "None&#xD;
+Then add that container WebUI port to gluetun
+&#xD;
+Features:&#xD;
+- Based on Alpine 3.15 for a small Docker image of 29MB&#xD;
+- Supports: Cyberghost, ExpressVPN, FastestVPN, HideMyAss, IPVanish, IVPN, Mullvad, NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, TorGuard, VPNUnlimited, Vyprvpn, WeVPN, Windscribe servers&#xD;
+- Supports OpenVPN for all providers listed&#xD;
+- Supports Wireguard both kernelspace and userspace&#xD;
+    - For Mullvad, Ivpn and Windscribe&#xD;
+    - For Torguard, VPN Unlimited and WeVPN using the custom provider&#xD;
+    - For custom Wireguard configurations using the custom provider&#xD;
+    - More in progress, see #134&#xD;
+- DNS over TLS baked in with service provider(s) of your choice&#xD;
+- DNS fine blocking of malicious/ads/surveillance hostnames and IP addresses, with live update every 24 hours&#xD;
+- Choose the vpn network protocol, udp or tcp&#xD;
+- Built in firewall kill switch to allow traffic only with needed the VPN servers and LAN devices&#xD;
+- Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
+- Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
+- Connect other containers to it&#xD;
+- Connect LAN devices to it&#xD;
+- Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le &#x1F386;&#xD;
+- Custom VPN server side port forwarding for Private Internet Access&#xD;
+- Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
+- Unbound subprogram drops root privileges once launched&#xD;
+- Can work as a Kubernetes sidecar container, thanks @rorph</Overview>
+  <Category>Security: Network:VPN Network:Privacy Status:Stable</Category>
+  <Icon>https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png</Icon>
+  <ExtraParams>--cap-add=NET_ADMIN --restart unless-stopped</ExtraParams>
+  <DateInstalled>1653012536</DateInstalled>
+  <DonateText>Consider donating to qmcgaw!</DonateText>
+  <DonateLink>https://www.paypal.me/qmcgaw</DonateLink>
+
+  <!--[PORTS]-->
+  <Config Name="HTTP_PROXY" Target="8888" Default="" Mode="tcp" Description="HTTP Proxy (Default:8888)" Type="Port" Display="always" Required="true" Mask="false">8888</Config>
+  <Config Name="SHADOWSOCKS_TCP" Target="8388" Default="" Mode="tcp" Description="Shadowsocks TCP (Default:8388)" Type="Port" Display="always" Required="true" Mask="false">8388</Config>
+  <Config Name="SHADOWSOCKS_UDP" Target="8388" Default="" Mode="udp" Description="Shadowsocks UDP (Default:8388)" Type="Port" Display="always" Required="true" Mask="false">8388</Config>
+
+  <!--[ALWAYS MENU]-->
+  <Config Name="VPN_SERVICE_PROVIDER" Target="VPN_SERVICE_PROVIDER" Default="private internet access|cyberghost|expressvpn|fastestvpn|hidemyass|ipvanish|ivpn|mullvad|nordvpn|perfect privacy|privado|privatevpn|protonvpn|purevpn|surfshark|torguard|vpn unlimited|vyprvpn|wevpn|windscribe|custom" Mode="" Description="VPN Service Provider" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="VPN_TYPE" Target="VPN_TYPE" Default="openvpn|wireguard" Mode="" Description="Choose OpenVPN or Wireguard" Type="Variable" Display="always" Required="true" Mask="false">openvpn</Config>
+  <Config Name="OPENVPN_USER" Target="OPENVPN_USER" Default="" Mode="" Description="OpenVPN Username" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="OPENVPN_PASSWORD" Target="OPENVPN_PASSWORD" Default="" Mode="" Description="OpenVPN Password" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+
+<!--[ADVANCED MENU]-->
+  <Config Name="APPDATA" Target="/gluetun" Default="/mnt/user/appdata/gluetun-min" Mode="rw" Description="Appdata to store persistent data" Type="Path" Display="advanced" Required="true" Mask="false">/mnt/user/appdata/gluetun-min</Config>
+  <Config Name="TIMEZONE" Target="TZ" Default="" Mode="" Description="Timezone for correct time in logs" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+
+</Container>
+```
+
+</details>
 
 &nbsp;
 
 ## Base XML
-
----
 
 ```xml
 <?xml version="1.0"?>
@@ -89,10 +159,13 @@ Usually bridge if not specified by the image maintainer
   - `bridge`
   - `host`
   - `none`
+
+- Custom networks can also be created.
   - `custom: br0`
+  - `custom: wg0`
   - `custom: DOCKER_NETWORK`
 
-For custom docker networks look under neat tricks.
+For custom docker networks go to [Create a docker network](###Create-a-docker-network).
 
 &nbsp;
 
@@ -208,9 +281,16 @@ URL to donation image.
 
 The internal container path for the volume. Where the data you want to be persistent is located inside the container. This is usually recommended by the maintainer.
 
+<details>
+<summary>XML Example</summary>
+
+XML
+
 ```xml
 <Config Target="/INTERNAL_PATH"/>
 ```
+
+</details>
 
 - `/INTERNAL_PATH`
   - Replace with the internal path in the container. e.g.
