@@ -4,10 +4,6 @@ Simple explanation for all the options when creating a xml template for Communit
 
 &nbsp;
 
-&nbsp;
-
-&nbsp;
-
 <details>
 <summary> Great to remember Markdown things </summary>
 
@@ -20,6 +16,10 @@ New line
 
 Dropdown
 
+<details>
+<summary> This is the name for the dropdown </summary>
+What should be inside the dropdown goes here.
+
 ```dropdown
 <details>
 <summary> This is the name for the dropdown </summary>
@@ -27,7 +27,12 @@ What should be inside the dropdown goes here.
 </details>
 ```
 
+</details>
+
 Block  
+Use one \` at either side of what you want inside the block  
+Like this:  
+\`This is a block\`  
 `This is a block`
 
 Code block
@@ -69,12 +74,14 @@ Has to be written in RAW HTML sadly.
 &nbsp;
 This is not needed but recommended.
 
->[How to get the unRAID Community Applications plugin](https://forums.unraid.net/topic/38582-plug-in-community-applications/)  
->[Check out the unRAID Community Apps web version](https://unraid.net/community/apps)
+> [How to get the unRAID Community Applications plugin](https://forums.unraid.net/topic/38582-plug-in-community-applications/)  
+> [Check out the unRAID Community Apps web version](https://unraid.net/community/apps)
 
 &nbsp;
 
 ## Template example
+
+All examples you see is based on this template:
 
 <details><summary>Complete template for Gluetun minimal</summary>
 
@@ -149,60 +156,148 @@ Features:&#xD;
 
 ## Base XML
 
-<details>
-<summary>Show the base XML</summary>
+XML base code you can copy and edit for your usecase, but you will need to manually add Ports/Variables/Paths to your xml file.
+
+<details open>
+<summary> Base XML code </summary>
 
 ```xml
 <?xml version="1.0"?>
 <Container version="2">
-    <Name>CONTAINER NAME</Name>
-    <Repository>REPOSITORY</Repository>
-    <Registry>https://hub.docker.com/r/USER/CONTAINER/</Registry>
-    <Network>bridge</Network>
-    <Privileged>false</Privileged>
-    <Support></Support>
-    <Project></Project>
-    <Overview></Overview>
-    <WebUI></WebUI>
-    <TemplateURL/>
-    <Icon>/plugins/dynamix.docker.manager/images/question.png</Icon>
-    <ExtraParams/>
-    <PostArgs/>
-    <DonateText/>
-    <DonateLink/>
+  <Name>        CONTAINER NAME </Name>
+  <Repository>  REPOSITORY/CONTAINER </Repository>
+  <Registry>    https://hub.docker.com/r/REPOSITORY/CONTAINER/ </Registry>
+  <Network>     NETWORK_MODE </Network>
+  <Privileged>  PRIVILEGED </Privileged>
+  <Support>     SUPPORT_PAGE </Support>
+  <Project>     PROJECT_PAGE </Project>
+  <Overview>    OVERVIEW_TEXT </Overview>
+  <WebUI>       WEBUI </WebUI>
+  <TemplateURL> TEMPLATE_URL </TemplateURL>
+  <Icon>        ICON </Icon>
+  <ExtraParams> EXTRA_PARAMS </ExtraParams>
+  <PostArgs>    POST_ARGS </PostArgs>
+  <DonateText>  DONATE_TEXT </DonateText>
+  <DonateLink>  DONATE_LINK </DonateLink>
+  <DonateImg>   DONATE_IMG </DonateImg>
 </Container>
 ```
 
 </details>
 
+Explaination for everything in UPPERCASE can be found [here](#adding-config).
+
 &nbsp;
 
 ## Template Options
 
-&nbsp;
-
-&nbsp;
-
-| Option | Example | Description |
-| - | - | - |
-| Container name | idrac6 | The name for the container, preferably in lowercase.
-| Container Repository | domistyle/idrac6 | The name of the image to pull from dockerHub (other repositories work. e.g. ghcr.io/CONTAINER_NAME lscr.io/CONTAINER_NAME)
-
-&nbsp;
-
 ### Template Name
 
-The name for the container, preferably in lowercase. e.g.
+The name for the container that will show in the docker tab in unRAID (or in CA if you decide to publish), preferably in lowercase and the original name of the container.
 
-- `idrac6`
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `CONTAINER_NAME`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Name>CONTAINER_NAME<Name/>
+  ```
+
+  </td>
+  <td> Where CONTAINER_NAME is changed with the name that you want for the container. </td>
+</tr>
+</table>
+
+<details>
+<summary>Example</summary>
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+</tr>
+<tr>
+  <td>
+  
+  `gluetun`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Name>gluetun<Name/>
+  ```
+
+  </td>
+</tr>
+</table>
+
+</details>
 
 &nbsp;
 
 ### Template Repository
 
-The name of the image to pull from dockerHub (other repositories work). e.g.
+The repository the image to pull from dockerHub (or other repositories).
 
-- `domistyle/idrac6`
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `REPOSITORY/CONTAINER`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Repository>REPOSITORY/CONTAINER<Repository/>
+  ```
+
+  </td>
+  <td> Where REPOSITORY/CONTAINER is changed with the repository for the container. </td>
+</tr>
+</table>
+
+<details>
+<summary>Example</summary>
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+</tr>
+<tr>
+  <td>
+  
+  `qmcgaw/gluetun`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Repository>qmcgaw/gluetun<Repository/>
+  ```
+
+  </td>
+</tr>
+</table>
+
+</details>
 
 &nbsp;
 
@@ -271,7 +366,8 @@ Basic description of the project. e.g.
 
 Which container-port a webui might be on. e.g.
 
-- `http://[IP]:[PORT:5800]`
+- `http://[IP]:[PORT:80]`
+- `https://[IP]:[PORT:443]`
   - Unraid will translate this string to the IP of the server, and the host-port set for container-port 5800
 
 &nbsp;
@@ -289,7 +385,7 @@ Url to the template e.g.
 
 URL to an icon, personally I prefer them in png. It has to be loaded over https. e.g.
 
-- `https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/chevereto.png`
+- Default Icon - `/plugins/dynamix.docker.manager/images/question.png`
   - Chevereto icon
 
 &nbsp;
@@ -330,17 +426,35 @@ URL to donation image.
 
 &nbsp;
 
-## Full Config syntax
+## Adding Config
 
----
+Here are more information regarding the configuration of Ports/Variables/Paths.
+
+### Full Config syntax
+
+This line can be copied to the bottom of your base xml. This has all the options you will need. No need to remove those you dont use, just leave them empty.
 
 ```xml
 <Config Name="" Target="" Default="" Mode="" Description="" Type="" Display="" Required="" Mask=""><Config/>
 ```
 
-## Add a Volume
+Be sure to place it before the
 
----
+```xml
+</Container>
+```
+
+<details>
+<summary> Example </summary>
+
+```xml
+<Config Name="" Target="" Default="" Mode="" Description="" Type="" Display="" Required="" Mask=""><Config/>
+</Container>
+```
+
+</details>
+
+## Add a Volume
 
 ### Volume Target
 
@@ -371,7 +485,7 @@ XML
 What permissions to use for the volume.
 
 ```xml
-<Config Mode="OPTIONS">
+<Config Mode="OPTIONS"/>
 ```
 
 - `OPTIONS`
@@ -393,14 +507,12 @@ The only option for "Type" is always `Path` for a volume.
 
 ## Add a Variable
 
----
-
 ### Variable Target
 
 The container variable specified by the container maintainer.
 
 ```xml
-<Config Target="CONTAINER_VARIABLE">
+<Config Target="CONTAINER_VARIABLE"/>
 ```
 
 - `CONTAINER_VARIABLE`
@@ -419,8 +531,6 @@ The only option for "Type" is always `Variable` for a enviroment variable.
 &nbsp;
 
 ## Add a Port
-
----
 
 ### Port Target
 
@@ -467,11 +577,7 @@ The only option for "Type" is always `Port` for a port.
 
 &nbsp;
 
-## Shared attributes
-
-&nbsp;
-
-&nbsp;
+## Shared Config attributes
 
 ### Name
 
@@ -508,8 +614,40 @@ TODO add image of unRAID to show this
 
 </details>
 
-Name - The name that shows in the Unraid template manager. e.g.
-    Appdata, PUID, WebUI
+### Description
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `DESCRIPTION`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Config Description="DESCRIPTION"/>
+  ```
+
+  </td>
+  <td> Where DESCRIPTION is changed with a longer explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows under the Port/Volume/Variable in the unRAID template manager. </td>
+</tr>
+</table>
+
+<details>
+<summary> Examples for NAME </summary>
+TODO add image of unRAID to show this
+
+- WebUI is the port to access the website
+- Appdata to store persistent data
+- PUID
+
+</details>
 
 Description - A more detailed description on this Config. e.g
     Appdata location, PUID, WebUI
@@ -574,7 +712,7 @@ Default - Suggested value for the Config. e.g.
   <td>
 
   ```xml
-  <Config Display="advanced"></Config>
+  <Config Display="advanced"/>
   ```
 
   </td>
@@ -590,7 +728,7 @@ Default - Suggested value for the Config. e.g.
   <td>
 
   ```xml
-  <Config Display="advanced-hide"></Config>
+  <Config Display="advanced-hide"/>
   ```
 
   </td>
@@ -703,30 +841,107 @@ Branch - Prompts the user to choose a dockerHub tag e.g.
 
 &nbsp;
 
-## Neat tricks
+## Neat tricks and tips
 
 ### Template predefined values aka dropdowns
 
 The template manager support setting a set of predefined values, often uses in conjunction with variables that expect bools.
-Defined by separating the values with |.
+Defined by separating the values with "|".  
+This is often used when there are multiple options for a variable.
 
-1. Example
+> :information_source: Has to be set in the `Default=""` attribute.  
 
-    ```xml
-    <Config Default="true|false"/>
-    ```
+<details open>
+<summary> Example </summary>
 
-2. Example
+```xml
+<Config Default="true|false"/>
+```
 
-    ```xml  
-    <Config Default="on|off"/>  
-    ```
+```xml  
+<Config Default="on|off"/>  
+```
 
->Has to be set in the `Default=""` attribute.  
+</details>
 
 &nbsp;
 
-### **Create a docker network**
+### Add Tags to containers
+
+If you wish to be on one spesific version or LTS of a container (assuming the container has tags).  
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+  <td> Description </td>
+</tr>
+<tr>
+  <td>
+  
+  `TAG`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Name>CONTAINER_NAME<Name/>
+  ```
+
+  </td>
+  <td> Where CONTAINER_NAME is changed with the name that you want for the container. </td>
+</tr>
+</table>
+
+<details>
+<summary>Example</summary>
+
+<table>
+<tr>
+  <td> Option </td>
+  <td> XML Code Example </td>
+</tr>
+<tr>
+  <td>
+  
+  `gluetun`
+
+  </td>
+  <td>
+  
+  ```xml
+  <Name>gluetun<Name/>
+  ```
+
+  </td>
+</tr>
+</table>
+
+</details>
+
+&nbsp;
+
+### Comment in the XML
+
+It is possible to add comments in the xml file.
+
+You can do this  
+
+```xml
+<!-- YOUR COMMENT HERE -->
+```
+
+You can also do multiline comments like this
+
+```xml
+<!--  
+YOUR COMMENT HERE
+-->
+```
+
+&nbsp;
+
+### Create a docker network
 
 For unRAID you will need to use the terminal
 
@@ -736,13 +951,97 @@ docker network create DOCKER_NETWORK_NAME
 
 Where DOCKER_NETWORK_NAME is the name you want for the network
 
-- So you can name one `proxy` for all your reverse proxied apps so you can use the container name as a hostname instead of using an IP.
+> :information_source: DOCKER_NETWORK_NAME has to be in one name. It can't be separated by space, but you can user "-" or "_" to seperate words.
+
+<details>
+<summary>Examle code</summary>
+
+> :information_source: This is just some examples for networks you can create.
+
+Proxy Network:
+
+```docker
+docker network create proxy
+```
+
+Secure Network:
+
+```docker
+docker network create secure
+```
+
+Database Network:
+
+```docker
+docker network create database
+```
+
+</details>
+
+So you can name one `proxy` for all your reverse proxied apps so you can use the container name as a hostname instead of using an IP.
+
+> :information_source: By doing it this way you have to use the internal port and not the external port
 
 &nbsp;
 
+### Docker PUID, PGID and UMASK
+
+#### PUID and PGID
+
+> :information_source: Setting these settings wrong on unRAID will cause wrong permissions.
+
+If you run `cat /etc/passwd | grep "nobody"` in your unRAID terminal you will get information like:
+
+```bash
+tower:~# cat /etc/passwd | grep "nobody"
+nobody:x:99:100:nobody:/:/bin/false
+```
+
+This is the recommended user to use for docker on unraid
+
+<details open>
+<summary>So for the user nobody</summary>
+
+- `PUID` is `99`
+- `PGID` is `100`
+
+</details>
+
+See [PUID and PGID](#unraid-docker-puid-and-pgid)
+
+#### UMASK
+
+> :warning: Setting this incorrectly can be a security risk!
+
+UMASK is used to set permissions for folders and files created by the container. 
+
+Recommended:
+
+- `UMASK` = `0022`  
+This will
+
+What is usually used:
+
+- `UMASK` = `0000`
+
+See [UMASK](#unraid-docker-umask) for more information
+
 &nbsp;
 
-## References
+## Referencess
 
->[selfhosters unRAID templating guide](https://selfhosters.net/docker/templating/templating/)  
->[unRAID Forums](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)  
+### unRAID templating
+
+> [unRAID Forums - Templating](https://forums.unraid.net/topic/101424-how-to-publish-docker-templates-to-community-applications-on-unraid/)
+>
+> [Selfhosters - unRAID templating guide](https://selfhosters.net/docker/templating/templating/)
+
+### unRAID docker PUID and PGID
+
+> [Linuxserver - Understanding PUID and PGID](https://docs.linuxserver.io/general/understanding-puid-and-pgid)
+>
+> [Reddit - unRAID PUID, PGID and UMASK](https://www.reddit.com/r/unRAID/comments/hl3s68/folder_permissions_docker_pgid_puid_umask/fxqq33h/)
+
+### unRAID docker UMASK
+
+> [unRAID Forums - UMASK](https://forums.unraid.net/topic/32278-docker-container-developer-best-practice-guidelines-for-unraid/page/3/)
