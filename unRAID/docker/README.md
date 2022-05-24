@@ -1146,7 +1146,7 @@ This just uses a bool to make the field required or not.
 </tr>
 </table>
 
-### Mask
+### <big> Mask </big>
 
 Allows value that is entered in the template to be hidden. This is usefull to hide sensitive information like passwords.
 
@@ -1183,7 +1183,7 @@ TODO picture of unirad showing this
   <td> Hides what is entered as a vaule.
 </table>
 
-### Additional tags
+### <big> Additional tags </big>
 
 Need more info on these.
 
@@ -1202,7 +1202,7 @@ Branch - Prompts the user to choose a dockerHub tag e.g.
 
 &nbsp;
 
-## Neat tricks and tips
+## <big> Neat tricks and tips </big>
 
 ### Template predefined values aka dropdowns
 
@@ -1233,21 +1233,21 @@ If you wish to be on one spesific version or LTS of a container (assuming the co
 
 <table>
 <tr>
-  <td> Option
   <td> XML Code Example
   <td> Description
 <tr>
-  <td>
-  
-  `TAG`
 
   <td>
   
   ```xml
-  <Name>CONTAINER_NAME:TAG<Name/>
+  <Repository> CONTAINER_NAME:TAG </Repository>
   ```
 
-  <td> Where CONTAINER_NAME is changed with the name that you want for the container.
+  <td>
+  
+  Where `CONTAINER_NAME` is changed with the container that you want. <br>
+  <br>
+  Where `:TAG` is changed with the tag you want as the default. Normally not needed since it wil pull the latest by default, but usefull if you want a data base to be on one spesific version.
 </table>
 
 <details>
@@ -1255,17 +1255,19 @@ If you wish to be on one spesific version or LTS of a container (assuming the co
 
 <table>
 <tr>
-  <td> Option
   <td> XML Code Example
 <tr>
   <td>
-  
-  `gluetun`
 
+  ```xml
+  <Repository> qmcgaw/gluetun:latest </Repository>
+  ```
+
+<tr>
   <td>
 
   ```xml
-  <Name>gluetun<Name/>
+  <Repository> qmcgaw/gluetun:v3 </Repository>
   ```
 
 </table>
@@ -1309,8 +1311,6 @@ Where DOCKER_NETWORK_NAME is the name you want for the network
 <details>
 <summary>Examle code</summary>
 
-> :information_source: This is just some examples for networks you can create.
-
 Proxy Network:
 
 ```docker
@@ -1333,7 +1333,8 @@ docker network create database
 
 So you can name one `proxy` for all your reverse proxied apps so you can use the container name as a hostname instead of using an IP.
 
-> :information_source: By doing it this way you have to use the internal port and not the external port
+> :information_source: By doing it this way you have to use the internal port and not the external port.  
+For apps that has conflicting ports see if they have an enviroment variable to change the internal port.
 
 &nbsp;
 
