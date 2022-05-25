@@ -1104,7 +1104,7 @@ Default - Suggested value for the Config. e.g.
 </tr>
 </table>
 
-### Required
+### <big> Required </big>
 
 This just uses a bool to make the field required or not.
 
@@ -1185,20 +1185,20 @@ TODO picture of unirad showing this
 
 ### <big> Additional tags </big>
 
-Need more info on these.
+Beta
 
-Beta - Gives the application a warning in CA with the following text. "This application has been marked as being Beta. This does NOT neccessarily mean that there will be issues.." e.g.
+- Gives the application a warning in CA with the following text. "This application has been marked as being Beta. This does NOT neccessarily mean that there will be issues.." e.g.
 
 ```xml
 <Beta>true</Beta> or <Beta>false</Beta>
 ```
 
-Branch - Prompts the user to choose a dockerHub tag e.g.
+Need more info on this.
+
+Branch
+
+- Prompts the user to choose a dockerHub tag e.g.
     linuxserver/emby.xml
-
-&nbsp;
-
-&nbsp;
 
 &nbsp;
 
@@ -1215,13 +1215,24 @@ This is often used when there are multiple options for a variable.
 <details open>
 <summary> Example </summary>
 
-```xml
-<Config Default="true|false"/>
-```
+<table>
+<tr>
+  <td> XML Code
+<tr>
+  <td>
 
-```xml  
-<Config Default="on|off"/>  
-```
+  ```xml
+  <Config Default="true|false"/>
+  ```
+
+<tr>
+  <td>
+
+  ```xml
+  <Config Default="on|off"/>  
+  ```
+
+</table>
 
 </details>
 
@@ -1233,7 +1244,7 @@ If you wish to be on one spesific version or LTS of a container (assuming the co
 
 <table>
 <tr>
-  <td> XML Code Example
+  <td> XML Code
   <td> Description
 <tr>
 
@@ -1255,7 +1266,7 @@ If you wish to be on one spesific version or LTS of a container (assuming the co
 
 <table>
 <tr>
-  <td> XML Code Example
+  <td> XML Code
 <tr>
   <td>
 
@@ -1298,36 +1309,86 @@ YOUR COMMENT HERE
 
 ### Create a docker network
 
-For unRAID you will need to use the terminal
+For unRAID you will need to use the terminal.
 
-```docker
-docker network create DOCKER_NETWORK_NAME
-```
+<details open>
+<summary>If you don't know where this is look here.</summary>
 
-Where DOCKER_NETWORK_NAME is the name you want for the network
+&nbsp;
+
+There are multiple ways to open the terminal on unRAID.
+
+<details open>
+<summary> WebUI </summary>
+
+WebUI explaination  
+
+In unRAID's WebUI you will see this icon <svg style="width:20px;height:20px"><path fill="currentColor" d="M13,19V16H21V19H13M8.5,13L2.47,7H6.71L11.67,11.95C12.25,12.54 12.25,13.5 11.67,14.07L6.74,19H2.5L8.5,13Z"/></svg> in the top right.
+
+</details>
+
+<details>
+<summary> SSH </summary>
+
+SSH explaination
+
+</details>
+
+&nbsp;
+
+</details>
 
 > :information_source: DOCKER_NETWORK_NAME has to be in one name. It can't be separated by space, but you can user "-" or "_" to seperate words.
+
+<table>
+<tr>
+  <td> Docker command
+  <td> Description
+<tr>
+  <td>
+
+  ```docker
+  docker network create DOCKER_NETWORK_NAME
+  ```
+
+  <td>
+
+  Where `DOCKER_NETWORK_NAME` is the name you want for the network.
+</table>
 
 <details>
 <summary>Examle code</summary>
 
-Proxy Network:
+<table>
 
-```docker
-docker network create proxy
-```
+<tr>
+  <td> Proxy Network
+<tr>
+  <td>
 
-Secure Network:
+  ```docker
+  docker network create proxy
+  ```
 
-```docker
-docker network create secure
-```
+<tr>
+  <td> Secure Network
+<tr>
+  <td>
 
-Database Network:
+  ```docker
+  docker network create secure
+  ```
 
-```docker
-docker network create database
-```
+<tr>
+  <td> Database Network
+<tr>
+  <td>
+
+  ```docker
+  docker network create database
+  ```
+
+</table>
 
 </details>
 
