@@ -1,8 +1,12 @@
 # Ultimate Guide for unRAID docker templates (WIP)
 
-Simple explanation for all the options when creating a xml template for Community Applications (the manual way).
+Simple explanation for all the options when creating a xml template for Community Applications (the manual way) pluss some tips and tricks.
+
+I don't claim to know everything so if I have misunderstood or said anything wrong then please do enlighten me. I have done this as a documentation project for myself, but if this helps anybody im glad. I'll also try to leave references to stuff i find at the bottom to help those who want more information.
 
 &nbsp;
+
+This is not needed, but for reference on how I make this markdown file. It will be removed when I feel like im done with this file.
 
 <details>
 <summary> Great to remember Markdown things </summary>
@@ -69,9 +73,6 @@ Has to be written in RAW HTML sadly.
 
 &nbsp;
 
-&nbsp;
-
-&nbsp;
 This is not needed but recommended.
 
 > [How to get the unRAID Community Applications plugin](https://forums.unraid.net/topic/38582-plug-in-community-applications/)  
@@ -83,7 +84,7 @@ This is not needed but recommended.
 
 All examples you see is based on this template:
 
-<details><summary>Complete template for Gluetun minimal</summary>
+<details><summary> View the complete template for Gluetun minimal XML </summary>
 
 ```xml
 <?xml version="1.0"?>
@@ -164,28 +165,32 @@ XML base code you can copy and edit for your usecase, but you will need to manua
 ```xml
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>        CONTAINER NAME </Name>
-  <Repository>  REPOSITORY/CONTAINER </Repository>
-  <Registry>    https://hub.docker.com/r/REPOSITORY/CONTAINER/ </Registry>
-  <Network>     NETWORK_MODE </Network>
-  <Privileged>  PRIVILEGED </Privileged>
-  <Support>     SUPPORT_PAGE </Support>
-  <Project>     PROJECT_PAGE </Project>
-  <Overview>    OVERVIEW_TEXT </Overview>
-  <WebUI>       WEBUI </WebUI>
+  <!-- This is information for unRAID to use -->
+  <Name> CONTAINER_NAME </Name>
+  <Repository> REPOSITORY/CONTAINER </Repository>
+  <Registry> https://hub.docker.com/r/REGISTRY/CONTAINER/ </Registry>
+  <Network> NETWORK_MODE </Network>
+  <Privileged> PRIVILEGED </Privileged>
+  <Support> SUPPORT_PAGE </Support>
+  <Project> PROJECT_PAGE </Project>
+  <Overview> OVERVIEW_TEXT </Overview>
+  <WebUI> WEBUI </WebUI>
   <TemplateURL> TEMPLATE_URL </TemplateURL>
-  <Icon>        ICON </Icon>
+  <Icon> ICON </Icon>
   <ExtraParams> EXTRA_PARAMS </ExtraParams>
-  <PostArgs>    POST_ARGS </PostArgs>
-  <DonateText>  DONATE_TEXT </DonateText>
-  <DonateLink>  DONATE_LINK </DonateLink>
-  <DonateImg>   DONATE_IMG </DonateImg>
+  <PostArgs> POST_ARGS </PostArgs>
+  <DonateText> DONATE_TEXT </DonateText>
+  <DonateLink> DONATE_LINK </DonateLink>
+  <DonateImg> DONATE_IMG </DonateImg>
+
+  <!-- This is for adding Ports/Variables/Paths -->
+  <Config Name="" Target="" Default="" Mode="" Description="" Type="" Display="" Required="" Mask=""><Config/>
 </Container>
 ```
 
 </details>
 
-Explaination for everything in UPPERCASE can be found [here](#adding-config).
+Explaination for everything in UPPERCASE can be found [here](#template-options).
 
 &nbsp;
 
@@ -194,7 +199,7 @@ Explaination for everything in UPPERCASE can be found [here](#adding-config).
 > :information_source: All GitHub links need to be in a raw format.  
 > Like this: 
 
-### Template Name
+### Template Container Name
 
 The name for the container that will show in the docker tab in unRAID (or in CA if you decide to publish), preferably in lowercase and the original name of the container.
 
@@ -213,7 +218,7 @@ The name for the container that will show in the docker tab in unRAID (or in CA 
 </table>
 
 <details>
-<summary> Example </summary>
+<summary> View example </summary>
 
 <table>
 <tr>
@@ -231,7 +236,7 @@ The name for the container that will show in the docker tab in unRAID (or in CA 
 
 &nbsp;
 
-### Template Repository
+### Template Repository/Container
 
 The repository the image to pull from dockerHub (or other repositories).
 
@@ -250,7 +255,7 @@ The repository the image to pull from dockerHub (or other repositories).
 </table>
 
 <details>
-<summary>Example</summary>
+<summary> View example</summary>
 
 <table>
 <tr>
@@ -268,7 +273,7 @@ The repository the image to pull from dockerHub (or other repositories).
 
 &nbsp;
 
-### Template Registry
+### Template Registry/Container
 
 Link to the dockerHub page for this container.
 
@@ -287,7 +292,7 @@ Link to the dockerHub page for this container.
 </table>
 
 <details>
-<summary> Example </summary>
+<summary> View example </summary>
 
 <table>
 <tr>
@@ -305,7 +310,7 @@ Link to the dockerHub page for this container.
 
 &nbsp;
 
-### Template Network
+### Template Network Mode
 
 Usually bridge if not specified by the image maintainer
 
@@ -433,7 +438,7 @@ A link to a support thread on the unraid forums for the container
 </table>
 
 <details>
-<summary> Example </summary>
+<summary> View example </summary>
 <table>
 <tr>
   <td> XML Code Example
@@ -468,7 +473,7 @@ Link to the GitHub page (or the homepage of the project).
 </table>
 
 <details>
-<summary> Example </summary>
+<summary> View example </summary>
 <table>
 <tr>
   <td> XML Code Example
@@ -492,7 +497,7 @@ Description of the project.
 
 <table>
 <tr>
-  <td> XML Code Example
+  <td> XML Code
   <td> Description
 <tr>
   <td>
@@ -511,7 +516,7 @@ Description of the project.
 </table>
 
 <details>
-<summary>Example</summary>
+<summary> View example </summary>
 
 <table>
 <tr>
@@ -535,7 +540,7 @@ Description of the project.
   Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, <br>
   TorGuard, VPN Unlimited, VyprVPN, WeVPN, Windscribe
 <tr>
-  <td> XML Code Example
+  <td> XML Code
 <tr>
   <td>
 
@@ -573,42 +578,38 @@ Which container-port a webui might be on. So when you left-click on the docker i
 
 <table>
 <tr>
-  <td> Option </td>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
+  <td> Option
+  <td> XML Code
+  <td> Description
 <tr>
   <td>
-  
+
   `http`
-  </td>
+
   <td>
 
   ```xml
   <Webui> http://[IP]:[PORT:8080] </Webui>
   ```
 
-  </td>
   <td>
   
-  In this example I used port `8080`. You can use the whole line and just change the port number to your desired port for the WebUI. </td>
-</tr>
+  In this example I used port `8080`. You can use the whole line and just change the port number to your desired port for the WebUI.
+
 <tr>
   <td>
   
   `https`
-  </td>
+
   <td>
   
   ```xml
   <Webui> https://[IP]:[PORT:8443] </Webui>
   ```
 
-  </td>
   <td>
   
-  This is not that often used, but the maintainer for the container will usually say it is https://. In this example I used port `8443`. You can use the whole line and just change the port number to your desired port for the WebUI. </td>
-</tr>
+  This is not that often used, but the maintainer for the container will usually say it is https://. In this example I used port `8443`. You can use the whole line and just change the port number to your desired port for the WebUI.
 </table>
 
 &nbsp;
@@ -619,9 +620,8 @@ URL to the template.
 
 <table>
 <tr>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
+  <td> XML Code
+  <td> Description
 <tr>
   <td>
 
@@ -629,18 +629,17 @@ URL to the template.
   <TemplateUrl> TEMPLATE_URL </TemplateUrl>
   ```
 
-  </td>
   <td>
   
-  Where TEMPLATE_URL is the URL to the xml file. </td>
-</tr>
+  Where TEMPLATE_URL is the URL to the xml file.
+
 </table>
 
 <details>
-<summary> Example </summary>
+<summary> View example </summary>
 <table>
 <tr>
-  <td> XML Code Example
+  <td> XML Code
 </tr>
   <td>
 
@@ -648,7 +647,6 @@ URL to the template.
   <TemplateUrl> https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/my-gluetun-min.xml </TemplateUrl>
   ```
 
-</tr>
 </table>
 </details>
 
@@ -661,9 +659,8 @@ Default Icon - `/plugins/dynamix.docker.manager/images/question.png`
 
 <table>
 <tr>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
+  <td> XML Code
+  <td> Description
 <tr>
   <td>
 
@@ -672,14 +669,13 @@ Default Icon - `/plugins/dynamix.docker.manager/images/question.png`
   ```
 
   <td> Where ICON_URL is where the icon is stored. Often GitHub is used for this and many maintainers have icons in their repositories.
-</tr>
 </table>
 
 <details>
-<summary> Example </summary>
+<summary> View example </summary>
 <table>
 <tr>
-  <td> XML Code Example </td>
+  <td> XML Code
 <tr>
   <td>
 
@@ -687,7 +683,6 @@ Default Icon - `/plugins/dynamix.docker.manager/images/question.png`
   <Icon> https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png </Icon>
   ```
 
-</tr>
 </table>
 </details>
 
@@ -1405,24 +1400,61 @@ For apps that has conflicting ports see if they have an enviroment variable to c
 
 > :information_source: Setting these settings wrong on unRAID will cause wrong permissions.
 
-If you run `cat /etc/passwd | grep "nobody"` in your unRAID terminal you will get information like:
+If you run `cat /etc/passwd | grep "USER"` in your unRAID terminal you will get information like:
 
-```bash
-tower:~# cat /etc/passwd | grep "nobody"
-nobody:x:99:100:nobody:/:/bin/false
+```sh
+USER:x:ID:GROUP:USER:/:/bin/false
 ```
 
-This is the recommended user to use for docker on unraid
+<details>
+<summary> Example </summary>
+
+```sh
+tower:~# cat /etc/passwd | grep "nobody"
+nobody:x:99:100:nobody:/:/bin/false
+
+tower:~# cat /etc/passwd | grep "root"
+root:x:0:0:Console and webGui login account:/root:/bin/bash
+
+tower:~# cat /etc/passwd | grep "SMB_USER"
+SMB_USER:x:1000:100:Admin User:/:/bin/false
+```
+
+</details>
 
 <details open>
-<summary>So for the user nobody</summary>
+<summary>So for the User ID for nobody</summary>
+
+:information_source: This is the recommended user for docker.
 
 - `PUID` is `99`
 - `PGID` is `100`
 
 </details>
 
-See [PUID and PGID](#unraid-docker-puid-and-pgid)
+<details open>
+<summary> For the default User ID for the default user </summary>
+
+:information_source: This is the first user you create on unRAID. This is the SMB user.
+
+- `PUID` is `1000`
+- `PGUI` is `100`
+
+</details>
+
+<details open>
+<summary> For the default User ID for root </summary>
+
+> :warning: Not recommended to use this user for anything docker related
+
+- `PUID` is `0`
+- `PGUI` is `0`
+
+</details>
+
+See [PUID and PGID](#unraid-docker-puid-and-pgid) for more information.
+
+&nbsp;
 
 #### UMASK
 
@@ -1430,12 +1462,20 @@ See [PUID and PGID](#unraid-docker-puid-and-pgid)
 
 UMASK is used to set permissions for folders and files created by the container.
 
+I don't know much about this subject, but this is what i have found on the internet.
+
+> :information_source: This is not always a Enviroment Variable so this can't always be added.  
+If it's not added you can open an issue on the maintainer's github for the container, but remember it can be hard to add enviroment variables to container after the docker file is created, so it's not always easy to do from what I have understood (I can be wrong).
+
 Recommended:
 
-- `UMASK` = `0022`  
-This will
+> :information_source: For unRAID this is recommended. A more stricter UMASK will cause problems.
+
+- `UMASK` = `0022`
 
 What is usually used:
+
+> :warning: Not recommended tho.
 
 - `UMASK` = `0000`
 
