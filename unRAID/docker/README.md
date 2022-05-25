@@ -1323,7 +1323,7 @@ There are multiple ways to open the terminal on unRAID.
 
 WebUI explaination  
 
-In unRAID's WebUI you will see this icon <img src="/.extras/console-line.svg"> in the top right.
+In unRAID's WebUI you will see this icon <img src="/.extras/console-line.svg" width="20" height="20"> in the top right.
 
 </details>
 
