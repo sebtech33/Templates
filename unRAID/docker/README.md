@@ -950,64 +950,73 @@ The only option for "Type" is always `Port` for a port.
 
 <table>
 <tr>
-  <td> Option </td>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
+  <td> XML Code
+  <td> Description
 <tr>
-  <td>
-  
-  `NAME`
-
-  </td>
   <td>
   
   ```xml
   <Config Name="NAME"/>
   ```
 
-  </td>
-  <td> Where NAME is change with a short explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows on the left side in the unRAID template manager. </td>
-</tr>
+  <td>
+  
+  Where `NAME` is change with a short explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows on the left side in the unRAID template manager.
 </table>
 
 <details>
-<summary> Examples for NAME </summary>
+<summary> View example </summary>
 TODO add image of unRAID to show this
 
-- WEBUI
-- APPDATA
-- PUID
+:information_source: The names don't need to be uppercase, but that is what I have usually seen in Community Applications.
 
+<table>
+<tr>
+  <td> XML Code
+<tr>
+  <td>
+
+  ```xml
+  <Config Name="WEBUI"></Config>
+  ```
+
+<tr>
+  <td>
+
+  ```xml
+  <Config Name="APPDATA"></Config>
+  ```
+
+<tr>
+  <td>
+
+  ```xml
+  <Config Name="PUID"></Config>
+  ```
+
+</table>
 </details>
 
 ### Description
 
 <table>
 <tr>
-  <td> Option </td>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
+  <td> XML Code
+  <td> Description
 <tr>
   <td>
-  
-  `DESCRIPTION`
 
-  </td>
-  <td>
-  
   ```xml
   <Config Description="DESCRIPTION"/>
   ```
 
-  </td>
-  <td> Where DESCRIPTION is changed with a longer explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows under the Port/Volume/Variable in the unRAID template manager. </td>
-</tr>
+  <td>
+  
+  Where `DESCRIPTION` is changed with a longer explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows under the Port/Volume/Variable in the unRAID template manager.
 </table>
 
 <details>
-<summary> Examples for NAME </summary>
+<summary> View example </summary>
 TODO add image of unRAID to show this
 
 - WebUI is the port to access the website
@@ -1016,13 +1025,48 @@ TODO add image of unRAID to show this
 
 </details>
 
-Description - A more detailed description on this Config. e.g
-    Appdata location, PUID, WebUI
+### Default
 
-Default - Suggested value for the Config. e.g.
-    /mnt/user/appdata/idrac, 99, 8080
+Suggested value for the Config.
 
-&nbsp;
+<table>
+<tr>
+  <td> XML Code
+  <td> Description
+<tr>
+  <td>
+
+  ```xml
+  <Config Default="DEFAULT"></Config>
+  ```
+
+  <td>
+  
+  Where `DEFAULT` is changed with what you think should be default, but does not have to be.
+</table>
+
+<details>
+<summary> View example </summary>
+
+<table>
+<tr>
+  <td> XML Code
+<tr>
+  <td>
+
+  ```xml
+  <Config Default="/mnt/user/appdata/gluetun-min"></Config>
+  ```
+
+<tr>
+  <td>
+
+  ```xml
+  <Config Default="8080"></Config>
+  ```
+
+</table>
+</details>
 
 &nbsp;
 
@@ -1030,17 +1074,13 @@ Default - Suggested value for the Config. e.g.
 
 <table>
 <tr>
-  <td> Option </td>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
-
+  <td> Option
+  <td> XML Code Example
+  <td> Description
 <tr>
   <td>
 
   `always`
-
-  </td>
 
   <td>
 
@@ -1048,55 +1088,44 @@ Default - Suggested value for the Config. e.g.
   <Config Display="always"/>
   ```
 
-  </td>
-  <td> Always show the Volume/Port/Variable, can be edited or deleted in basic view. </td>
+  <td> Always show the Volume/Port/Variable, can be edited or deleted in basic view.
 <tr>
   <td>
   
   `always-hide`
 
-  </td>
   <td>
 
   ```xml
   <Config Display="always-hide"/>
   ```
 
-  </td>
-  <td> Always show the Volume/Port/Variable, can't be edited or deleted in basic view. </td>
-</tr>
-
+  <td> Always show the Volume/Port/Variable, can't be edited or deleted in basic view.
 <tr>
   <td>
 
    `advanced`
 
-  </td>
   <td>
 
   ```xml
   <Config Display="advanced"/>
   ```
 
-  </td>
-  <td> Shows when the user presses "Show more settings ...", can be edited or deleted in basic view. </td>
-</tr>
+  <td> Shows when the user presses "Show more settings ...", can be edited or deleted in basic view.
 
 <tr>
   <td>
 
    `advanced-hide`
 
-  </td>
   <td>
 
   ```xml
   <Config Display="advanced-hide"/>
   ```
 
-  </td>
-  <td> Shows when the user presses "Show more settings ...", can't be edited or deleted in basic view. </td>
-</tr>
+  <td> Shows when the user presses "Show more settings ...", can't be edited or deleted in basic view.
 </table>
 
 ### <big> Required </big>
@@ -1105,40 +1134,33 @@ This just uses a bool to make the field required or not.
 
 <table>
 <tr>
-  <td> Option </td>
-  <td> XML Code Example </td>
-  <td> Description </td>
-</tr>
+  <td> Boolean
+  <td> XML Code Example
+  <td> Description
 <tr>
   <td>
   
   `true`
 
-  </td>
   <td>
   
   ```xml
   <Config Required="true"/>
   ```
 
-  </td>
-  <td> Value is required to be entered. </td>
-</tr>
+  <td> Value is required to be entered.
 <tr>
   <td>
   
   `false`
 
-  </td>
   <td>
   
   ```xml
   <Config Required="false"/>
   ```
 
-  </td>
-  <td> Value is not required to be entered. </td>
-</tr>
+  <td> Value is not required to be entered.
 </table>
 
 ### <big> Mask </big>
@@ -1184,13 +1206,40 @@ Beta
 
 - Gives the application a warning in CA with the following text. "This application has been marked as being Beta. This does NOT neccessarily mean that there will be issues.." e.g.
 
-```xml
-<Beta>true</Beta> or <Beta>false</Beta>
-```
+<table>
+<tr>
+  <td> Boolean
+  <td> XML Code
+  <td> Description
+<tr>
+ <td>
 
-Need more info on this.
+ `true`
+
+  <td>
+
+  ```xml
+  <Beta> true </Beta>
+  ```
+
+  <td> Desc
+<tr>
+ <td>
+
+ `false`
+
+  <td>
+
+  ```xml
+  <Beta> false </Beta>
+  ```
+
+  <td> Desc
+</table>
 
 Branch
+
+Need more info on this.
 
 - Prompts the user to choose a dockerHub tag e.g.
     linuxserver/emby.xml
@@ -1202,13 +1251,29 @@ Branch
 ### Template predefined values aka dropdowns
 
 The template manager support setting a set of predefined values, often uses in conjunction with variables that expect bools.
-Defined by separating the values with "|".  
+Defined by separating the values with " | ".  
 This is often used when there are multiple options for a variable.
 
 > :information_source: Has to be set in the `Default=""` attribute.  
 
-<details open>
-<summary> Example </summary>
+<table>
+<tr>
+  <td> XML Code
+  <td> Description
+<tr>
+  <td>
+
+  ```xml
+  <Config Default="OPTIONS|SEPERATED|BY|PIPE"></Config>
+  ```
+
+  <td>
+  
+  Where you use ` | ` to seperate each variable option.
+</table>
+
+<details>
+<summary> View example </summary>
 
 <table>
 <tr>
@@ -1257,7 +1322,7 @@ If you wish to be on one spesific version or LTS of a container (assuming the co
 </table>
 
 <details>
-<summary>Example</summary>
+<summary> View example </summary>
 
 <table>
 <tr>
@@ -1284,15 +1349,15 @@ If you wish to be on one spesific version or LTS of a container (assuming the co
 
 ### Comment in the XML
 
-It is possible to add comments in the xml file.
+It is possible to add comments in the xml file. It's not needed for for a detail freak like me its nice, helps remebering things too.
 
-You can do this  
+To add a inline comment you can do this:
 
 ```xml
 <!-- YOUR COMMENT HERE -->
 ```
 
-You can also do multiline comments like this
+For multiline comments you can do it like this.
 
 ```xml
 <!--  
@@ -1319,6 +1384,8 @@ There are multiple ways to open the terminal on unRAID.
 WebUI explaination  
 
 In unRAID's WebUI you will see this icon <img src="/.extras/console-line.svg" width="20" height="20"> in the top right.
+
+<img src="/.extras/unRAID/images/unRAID_UI_Icons.png">
 
 </details>
 
