@@ -831,7 +831,7 @@ Be sure to place it before the
 <summary> Example </summary>
 
 ```xml
-<Config Name="" Target="" Default="" Mode="" Description="" Type="" Display="" Required="" Mask=""><Config/>
+  <Config Name="" Target="" Default="" Mode="" Description="" Type="" Display="" Required="" Mask=""><Config/>
 </Container>
 ```
 
@@ -839,27 +839,74 @@ Be sure to place it before the
 
 ## Add a Volume
 
+You will see something like this. Usually in a single line, but I have made it into a multiline so its easier to read here.
+> :question: I think you can make the templates like this too, but I have not tested this.
+
+```xml
+<Config
+  Name="SHARED_NAME"
+  Target="/VOLUME_TARGET"
+  Default="SHARED_DEFAULT"
+  Mode="VOLUME_MODE"
+  Description="SHARED_DESCRIPTION"
+  Type="VOLUME_TYPE"
+  Display="SHARED_DISPLAY"
+  Required="SHARED_REQUIRED"
+  Mask="SHARED_MASK">
+</Config>
+```
+
+> :information_source: See everything starting with SHARED [here](#shared-config-attributes).
+
 ### Volume Target
 
 The internal container path for the volume. Where the data you want to be persistent is located inside the container. This is usually recommended by the maintainer.
 
+<table>
+<tr>
+  <td> XML Code
+  <td> Description
+<tr>
+  <td>
+
+  ```xml
+  <Config Target="/INTERNAL_PATH"/>
+  ```
+
+  <td>
+
+  Where `/INTERNAL_PATH` is changed with the internal path to where the the persistent data is stored.
+</table>
+
 <details>
-<summary>XML Example</summary>
+<summary> View example </summary>
 
-XML
+<table>
+<tr>
+  <td> XML Code
+<tr>
+  <td>
 
-```xml
-<Config Target="/INTERNAL_PATH"/>
-```
+  ```xml
+  <Config Target="/config"/>
+  ```
 
+<tr>
+  <td>
+
+  ```xml
+  <Config Target="/data"/>
+  ```
+
+<tr>
+  <td>
+  
+  ```xml
+  <Config Target="/var/log"/>
+  ```
+
+</table>
 </details>
-
-- `/INTERNAL_PATH`
-  - Replace with the internal path in the container. e.g.
-    - `/config`
-    - `/data`
-    - `/var/log`
-    - etc
 
 &nbsp;
 
@@ -867,14 +914,28 @@ XML
 
 What permissions to use for the volume.
 
-```xml
-<Config Mode="OPTIONS"/>
-```
+<table>
+<tr>
+  <td> Mode
+  <td> XML Code
+  <td> Description
+<tr>
+  <td>
 
-- `OPTIONS`
-  - `rw` - Read-Write
-  - `ro` - Read-Only
-  - Slave options also supported
+  `rw` or `ro`
+  <td>
+
+  ```xml
+  <Config Mode="MODE"/>
+  ```
+
+  <td>
+
+  Where `MODE` is changed with the modes you want.  
+  `rw` is Read-Write  
+  `ro` is Read-Only  
+  Slave options is also supported.
+</table>
 
 &nbsp;
 
@@ -882,9 +943,17 @@ What permissions to use for the volume.
 
 The only option for "Type" is always `Path` for a volume.
 
-```xml
-<Config Type="Path"/>
-```
+<table>
+<tr>
+  <td> XML Code
+<tr>
+  <td>
+
+  ```xml
+  <Config Type="Path"/>
+  ```
+
+</table>
 
 &nbsp;
 
@@ -1248,6 +1317,8 @@ Need more info on this.
 
 ## <big> Neat tricks and tips </big>
 
+&nbsp;
+
 ### Template predefined values aka dropdowns
 
 The template manager support setting a set of predefined values, often uses in conjunction with variables that expect bools.
@@ -1462,6 +1533,8 @@ For apps that has conflicting ports see if they have an enviroment variable to c
 &nbsp;
 
 ### Docker PUID, PGID and UMASK
+
+&nbsp;
 
 #### PUID and PGID
 
