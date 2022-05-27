@@ -1540,6 +1540,8 @@ For apps that has conflicting ports see if they have an enviroment variable to c
 
 > :information_source: Setting these settings wrong on unRAID will cause wrong permissions.
 
+This sets user and group permissions.
+
 If you run `cat /etc/passwd | grep "USER"` in your unRAID terminal you will get information like:
 
 ```sh
@@ -1604,20 +1606,46 @@ UMASK is used to set permissions for folders and files created by the container.
 
 I don't know much about this subject, but this is what i have found on the internet.
 
-> :information_source: This is not always a Enviroment Variable so this can't always be added.  
-If it's not added you can open an issue on the maintainer's github for the container, but remember it can be hard to add enviroment variables to container after the docker file is created, so it's not always easy to do from what I have understood (I can be wrong).
+> :information_source: This is not always a Enviroment Variable.  
+If it's not added you can open an issue on the maintainer's github for the container, but remember it can be hard to add enviroment variables to container after the dockerfile is created, so it's not always easy to do from what I have understood (I can be wrong about this).
 
-Recommended:
+<details open>
+<summary> This is what I recommend. </summary>
 
-> :information_source: For unRAID this is recommended. A more stricter UMASK will cause problems.
+> :information_source: This will keep smb working with docker files.
 
-- `UMASK` = `0022`
+UMASK for `002` results in
 
-What is usually used:
+- `775` for folders (`drwxrwxr-x`)
+- `664` for files (`-rw-rw-r--`)
 
-> :warning: Not recommended tho.
+> :information_source: If someone has more knowlage about this and would like to help documenting this, please do.
+</details>
 
-- `UMASK` = `0000`
+<details open>
+<summary> A more sane option would be </summary>
+
+> :information_source: I have found this has a problem on smb if a docker creates a file.
+
+UMASK for `022` which results in
+
+- `755` for folders (`drwxr-xr-x`)
+- `644` for files (`-rw-r--r--`)
+
+</details>
+
+<details open>
+<summary> What root uses </summary>
+
+> :warning: Not recommended as this is the root user and group.  
+> :information_source: Some container uses this by default, but its not recommended.
+
+UMASK for `000` results in
+
+- `777` for folders (`drwxrwxrwx`)
+- `666` for files (`-rw-rw-rw-`)
+
+</details>
 
 See [UMASK](#unraid-docker-umask) for more information
 
@@ -1636,7 +1664,15 @@ See [UMASK](#unraid-docker-umask) for more information
 > [Linuxserver - Understanding PUID and PGID](https://docs.linuxserver.io/general/understanding-puid-and-pgid)
 >
 > [Reddit - unRAID PUID, PGID and UMASK](https://www.reddit.com/r/unRAID/comments/hl3s68/folder_permissions_docker_pgid_puid_umask/fxqq33h/)
+>
+> [Servarr - Docker Guide PUID and PGID](https://wiki.servarr.com/docker-guide#puid-and-pgid)
 
 ### unRAID docker UMASK
 
-> [unRAID Forums - UMASK](https://forums.unraid.net/topic/32278-docker-container-developer-best-practice-guidelines-for-unraid/page/3/)
+> [unRAID Forums - umask](https://forums.unraid.net/topic/32278-docker-container-developer-best-practice-guidelines-for-unraid/page/3/)
+>
+> [Servarr - Docker Guide umask](https://wiki.servarr.com/docker-guide#umask)
+>
+> [Cyberciti - Understanding linux unic umask value](https://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html)
+>
+> [Linuxize - Understanding umask](https://linuxize.com/post/umask-command-in-linux/#understanding-umask)
