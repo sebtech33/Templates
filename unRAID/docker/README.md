@@ -165,7 +165,7 @@ XML base code you can copy and edit for your usecase, but you will need to manua
 ```xml
 <?xml version="1.0"?>
 <Container version="2">
-  <!-- This is information for unRAID to use -->
+  <!-- This is information for the container -->
   <Name> CONTAINER_NAME </Name>
   <Repository> REPOSITORY/CONTAINER </Repository>
   <Registry> https://hub.docker.com/r/REGISTRY/CONTAINER/ </Registry>
@@ -183,7 +183,7 @@ XML base code you can copy and edit for your usecase, but you will need to manua
   <DonateLink> DONATE_LINK </DonateLink>
   <DonateImg> DONATE_IMG </DonateImg>
 
-  <!-- This is for adding Ports/Variables/Paths -->
+  <!-- This is for adding ports/variables/paths -->
   <Config Name="" Target="" Default="" Mode="" Description="" Type="" Display="" Required="" Mask=""><Config/>
 </Container>
 ```
@@ -196,8 +196,7 @@ Explaination for everything in UPPERCASE can be found [here](#template-options).
 
 ## Template Options
 
-> :information_source: All GitHub links need to be in a raw format.  
-> Like this: 
+> :information_source: All GitHub links need to be in a raw format.
 
 ### Template Container Name
 
@@ -977,7 +976,7 @@ The container variable specified by the container maintainer.
 The only option for "Type" is always `Variable` for a enviroment variable.
 
 ```xml
-<Config Type="Variable">
+<Config Type="Variable"/>
 ```
 
 &nbsp;
@@ -989,7 +988,7 @@ The only option for "Type" is always `Variable` for a enviroment variable.
 The container port.
 
 ```xml
-<Config Target="PORT">
+<Config Target="PORT"/>
 ```
 
 - `PORT`
@@ -1006,7 +1005,7 @@ The container port.
 The only option for "Type" is always `Port` for a port.
 
 ```xml
-<Config Type="Port">
+<Config Type="Port"/>
 ```
 
 &nbsp;
@@ -1016,6 +1015,8 @@ The only option for "Type" is always `Port` for a port.
 ## Shared Config attributes
 
 ### Name
+
+This is the name that shows on the left side in the unRAID template manager.
 
 <table>
 <tr>
@@ -1030,7 +1031,7 @@ The only option for "Type" is always `Port` for a port.
 
   <td>
   
-  Where `NAME` is change with a short explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows on the left side in the unRAID template manager.
+  Where `NAME` is change with a short explaination of what that Port/Volume/Variable does (Examples of this under).
 </table>
 
 <details>
@@ -1068,6 +1069,8 @@ TODO add image of unRAID to show this
 
 ### Description
 
+This is a more extensive description of what the Port/Volume/Variable is and it shows under the input field in the unRAID template manager.
+
 <table>
 <tr>
   <td> XML Code
@@ -1081,7 +1084,7 @@ TODO add image of unRAID to show this
 
   <td>
   
-  Where `DESCRIPTION` is changed with a longer explaination of what that Port/Volume/Variable does (Examples of this under). This is the name that shows under the Port/Volume/Variable in the unRAID template manager.
+  Where `DESCRIPTION` is changed with a longer explaination of what that Port/Volume/Variable does (Examples of this under).
 </table>
 
 <details>
@@ -1096,7 +1099,7 @@ TODO add image of unRAID to show this
 
 ### Default
 
-Suggested value for the Config.
+This is what you think the default value should be. It allow the user to change this since your setup does not always work for everyone so this is just a suggestion.
 
 <table>
 <tr>
@@ -1140,6 +1143,8 @@ Suggested value for the Config.
 &nbsp;
 
 ### Display
+
+Here is all the options for display. This is for customazation in how the template shows when someone uses it. For example the `-hide` option hides the edit and remove buttons from the template.
 
 <table>
 <tr>
@@ -1197,9 +1202,11 @@ Suggested value for the Config.
   <td> Shows when the user presses "Show more settings ...", can't be edited or deleted in basic view.
 </table>
 
-### <big> Required </big>
+### Required
 
-This just uses a bool to make the field required or not.
+Allows value that is entered in the template to be required. This wil insure that the field is not left empty if it has to have a value for it to work.
+
+This just uses a boolean to make the field required or not.
 
 <table>
 <tr>
@@ -1209,19 +1216,7 @@ This just uses a bool to make the field required or not.
 <tr>
   <td>
   
-  `true`
-
-  <td>
-  
-  ```xml
-  <Config Required="true"/>
-  ```
-
-  <td> Value is required to be entered.
-<tr>
-  <td>
-  
-  `false`
+  `true` or `false`
 
   <td>
   
@@ -1229,10 +1224,13 @@ This just uses a bool to make the field required or not.
   <Config Required="false"/>
   ```
 
-  <td> Value is not required to be entered.
+  <td>
+
+  Default = `false`  
+  Set if the value is required to be entered.
 </table>
 
-### <big> Mask </big>
+### Mask
 
 Allows value that is entered in the template to be hidden. This is usefull to hide sensitive information like passwords.
 
@@ -1245,28 +1243,18 @@ TODO picture of unirad showing this
   <td> Description
 <tr>
   <td>
-  
-  `true`
 
-  <td>
-  
-  ```xml
-  <Config Mask="true"/>
-  ```
-
-  <td> Shows what is entered as a vaule.
-<tr>
-  <td>
-  
-  `false`
-
+  `true` or `false`
   <td>
   
   ```xml
   <Config Mask="false"/>
   ```
 
-  <td> Hides what is entered as a vaule.
+  <td>
+  
+  Default = `false`  
+  Set if the value that is entered should be hidden.
 </table>
 
 ### <big> Additional tags </big>
@@ -1440,23 +1428,39 @@ YOUR COMMENT HERE
 
 ### Create a docker network
 
-For unRAID you will need to use the terminal.
+To create a docker network you will need to use the terminal.
 
 <details open>
-<summary>If you don't know where this is look here.</summary>
-
-&nbsp;
+<summary> If you don't know how to do this, look here. </summary>
 
 There are multiple ways to open the terminal on unRAID.
 
-<details open>
+<details>
 <summary> WebUI </summary>
 
 WebUI explaination  
 
-In unRAID's WebUI you will see this icon <img src="/.extras/console-line.svg" width="20" height="20"> in the top right.
+In unRAID's WebUI you will see this icon <img src="https://user-images.githubusercontent.com/27271446/170883559-51538954-4132-4bc8-bc89-70ae15f6610b.png" width="20" height="20"> in the top right.
 
-<img src="/.extras/unRAID/images/unRAID_UI_Icons.png">
+![WebUI icons](https://user-images.githubusercontent.com/27271446/170881378-50a78a9d-a883-4c28-b1e6-86104caece3a.png)
+
+> :information_source: The extra icons and search is from two plugins installed via the Community Applications.
+
+<details>
+<summary> Plugins </summary>
+
+- Dynamix System Buttons from Dynamix Repository
+- GUI Search from Andrew Zawadzki
+
+</details>
+
+Click that icon and a window like this will show up.
+
+![unraid_webui_terminal](https://user-images.githubusercontent.com/27271446/170884580-0f206355-47b2-4723-8d30-c2a3f3a1271b.png)
+
+Here you will type the docker command (command below).
+
+&nbsp;
 
 </details>
 
@@ -1465,13 +1469,33 @@ In unRAID's WebUI you will see this icon <img src="/.extras/console-line.svg" wi
 
 SSH explaination
 
+You can use SSH to connect to the server too. This can be done by using Putty or other ssh programs. I personally use OpenSSH (on Windows with ssh-keys).
+
+<table>
+<tr>
+  <td> SSH command
+  <td> Description
+<tr>
+  <td>
+
+  ```sh
+  ssh root@<SERVER-IP>
+  ```
+
+  <td>
+
+  Where `root` is the default ssh user on unRAID.
+
+  Where `<SERVER-IP>` is the ip of your server.
+</table>
+
+You would then enter the root password (same as you use to log into the webui). Then enter the docker command below.
+
 </details>
 
 &nbsp;
 
 </details>
-
-> :information_source: DOCKER_NETWORK_NAME has to be in one name. It can't be separated by space, but you can user "-" or "_" to seperate words.
 
 <table>
 <tr>
@@ -1486,7 +1510,9 @@ SSH explaination
 
   <td>
 
-  Where `DOCKER_NETWORK_NAME` is the name you want for the network.
+  Where `DOCKER_NETWORK_NAME` is the name you want for the network.  
+
+  > :information_source: DOCKER_NETWORK_NAME has to be in one name. It can't be separated by space, but you can for example use "-" or "_" to seperate words.
 </table>
 
 <details>
@@ -1509,7 +1535,7 @@ SSH explaination
   <td>
 
   ```docker
-  docker network create secure
+  docker network create secure_net
   ```
 
 <tr>
@@ -1518,7 +1544,7 @@ SSH explaination
   <td>
 
   ```docker
-  docker network create database
+  docker network create secure-database
   ```
 
 </table>
@@ -1527,14 +1553,12 @@ SSH explaination
 
 So you can name one `proxy` for all your reverse proxied apps so you can use the container name as a hostname instead of using an IP.
 
-> :information_source: By doing it this way you have to use the internal port and not the external port.  
+> :information_source: By doing it this way you have to use the internal port and not the external port.
 For apps that has conflicting ports see if they have an enviroment variable to change the internal port.
 
 &nbsp;
 
 ### Docker PUID, PGID and UMASK
-
-&nbsp;
 
 #### PUID and PGID
 
@@ -1600,14 +1624,14 @@ See [PUID and PGID](#unraid-docker-puid-and-pgid) for more information.
 
 #### UMASK
 
-> :warning: Setting this incorrectly can be a security risk!
+> :warning: Setting this incorrectly can be a security risk!  
+>
+> :information_source: This is not always a Enviroment Variable.
+If it's not added you can open an issue on the maintainer's github for the container, but remember it can be hard to add enviroment variables to container after the dockerfile is created, so it's not always easy to do from what I have understood (I can be wrong about this).
 
 UMASK is used to set permissions for folders and files created by the container.
 
 I don't know much about this subject, but this is what i have found on the internet.
-
-> :information_source: This is not always a Enviroment Variable.  
-If it's not added you can open an issue on the maintainer's github for the container, but remember it can be hard to add enviroment variables to container after the dockerfile is created, so it's not always easy to do from what I have understood (I can be wrong about this).
 
 <details open>
 <summary> This is what I recommend. </summary>
@@ -1638,6 +1662,7 @@ UMASK for `022` which results in
 <summary> What root uses </summary>
 
 > :warning: Not recommended as this is the root user and group.  
+>
 > :information_source: Some container uses this by default, but its not recommended.
 
 UMASK for `000` results in
@@ -1648,6 +1673,8 @@ UMASK for `000` results in
 </details>
 
 See [UMASK](#unraid-docker-umask) for more information
+
+&nbsp;
 
 &nbsp;
 
