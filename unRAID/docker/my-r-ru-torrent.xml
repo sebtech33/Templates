@@ -4,38 +4,33 @@
   <Repository>crazymax/rtorrent-rutorrent</Repository>
   <Registry>https://hub.docker.com/r/crazymax/rtorrent-rutorrent/</Registry>
   <Network>bridge</Network>
-  <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
   <Project>https://github.com/crazy-max/docker-rtorrent-rutorrent</Project>
   <Overview>rTorrent and ruTorrent Docker image based on Alpine Linux&#xD;
-&#xD;
-Features&#xD;
-- Run as non-root user&#xD;
-- Multi-platform image&#xD;
-- Latest rTorrent / libTorrent release compiled from source&#xD;
-- Latest ruTorrent release&#xD;
-- Name resolving enhancements with c-ares for asynchronous DNS requests (including name resolves)&#xD;
-- Enhanced rTorrent config and bootstraping with a local config&#xD;
-- XMLRPC through nginx over SCGI socket (basic auth optional)&#xD;
-- WebDAV on completed downloads (basic auth optional)&#xD;
-- Ability to add a custom ruTorrent plugin / theme&#xD;
-- Allow persisting specific configuration for ruTorrent plugins&#xD;
-- ruTorrent GeoIP2 plugin&#xD;
-- mktorrent installed for ruTorrent create plugin&#xD;
-- Traefik Docker image as reverse proxy and creation/renewal of Let's Encrypt certificates (see this template)&#xD;
-- geoip-updater Docker image to download MaxMind's GeoIP2 databases on a time-based schedule for geolocation</Overview>
+    &#xD;
+    Features&#xD;
+    - Run as non-root user&#xD;
+    - Multi-platform image&#xD;
+    - Latest rTorrent / libTorrent release compiled from source&#xD;
+    - Latest ruTorrent release&#xD;
+    - Name resolving enhancements with c-ares for asynchronous DNS requests (including name resolves)&#xD;
+    - Enhanced rTorrent config and bootstraping with a local config&#xD;
+    - XMLRPC through nginx over SCGI socket (basic auth optional)&#xD;
+    - WebDAV on completed downloads (basic auth optional)&#xD;
+    - Ability to add a custom ruTorrent plugin / theme&#xD;
+    - Allow persisting specific configuration for ruTorrent plugins&#xD;
+    - ruTorrent GeoIP2 plugin&#xD;
+    - mktorrent installed for ruTorrent create plugin&#xD;
+    - Traefik Docker image as reverse proxy and creation/renewal of Let's Encrypt certificates (see this template)&#xD;
+    - geoip-updater Docker image to download MaxMind's GeoIP2 databases on a time-based schedule for geolocation</Overview>
   <Category>Downloaders:</Category>
   <WebUI>http://[IP]:[PORT:8040]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/my-r-ru-torrent.xml</TemplateURL>
   <Icon>https://fleet.linuxserver.io/images/linuxserver_rutorrent.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
-  <PostArgs/>
-  <CPUset/>
-  <DateInstalled>1653011779</DateInstalled>
-  <DonateText/>
-  <DonateLink/>
-  <Requires/>
+  <DonateText></DonateText>
+  <DonateLink></DonateLink>
 
   <!--Ports-->
   <Config Name="RUTORRENT_PORT" Target="8040" Default="8080" Mode="tcp" Description="ruTorrent HTTP port" Type="Port" Display="always" Required="true" Mask="false">8040</Config>

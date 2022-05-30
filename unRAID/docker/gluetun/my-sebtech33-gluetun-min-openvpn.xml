@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>gluetun</Name>
+  <Repository>qmcgaw/gluetun</Repository>
+  <Registry>https://hub.docker.com/r/qmcgaw/gluetun</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Project>https://github.com/qdm12/gluetun</Project>
+  <Overview>Gluetun VPN Client&#xD;
+  &#xD;
+  &#xD;
+  Is a lightweight swiss-knife-like VPN client to tunnel many different VPN Providers to VPN servers using Go, OpenVPN or Wireguard, iptables, DNS over TLS, ShadowSocks and an HTTP proxy&#xD;
+  &#xD;
+  Usage:&#xD;
+  Add "--network=container:gluetun-vpn-client" to a docker container's "Extra Parameters"&#xD;
+  (If you change the container name be sure to change "--network=container:GLUETUN-CONTAINER-NAME")&#xD;
+  And set "Network Type" to "None"&#xD;
+  Then add that container WebUI port to gluetun&#xd;
+  More info here:&#xD;
+  https://github.com/qdm12/gluetun/wiki/Port-mapping&#xD;
+  (don't use localhost if you are on a lan device. for example a laptop or desktop, just use the server ip)&#xD;
+  &#xd;
+  More info on Custom OpenVPN Configuration here:&#xD;
+  (By default the openvpn file need to be named custom.conf)&#xD;
+  https://github.com/qdm12/gluetun/wiki/OpenVPN-configuration-file&#xD;
+  &#xD;
+  For Wireguard I recommend reading this first:&#xD;
+  https://github.com/qdm12/gluetun/wiki/Wireguard&#xD;
+  &#xD;
+  Features:&#xD;
+  - Based on Alpine 3.15 for a small Docker image of 29MB&#xD;
+  - Supports: Cyberghost, ExpressVPN, FastestVPN, HideMyAss, IPVanish, IVPN, Mullvad, NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, TorGuard, VPNUnlimited, Vyprvpn, WeVPN, Windscribe servers&#xD;
+  - Supports OpenVPN for all providers listed&#xD;
+  - Supports Wireguard both kernelspace and userspace&#xD;
+    - For Mullvad, Ivpn and Windscribe&#xD;
+    - For Torguard, VPN Unlimited and WeVPN using the custom provider&#xD;
+    - For custom Wireguard configurations using the custom provider&#xD;
+    - More in progress, see #134&#xD;
+  - DNS over TLS baked in with service provider(s) of your choice&#xD;
+  - DNS fine blocking of malicious/ads/surveillance hostnames and IP addresses, with live update every 24 hours&#xD;
+  - Choose the vpn network protocol, udp or tcp&#xD;
+  - Built in firewall kill switch to allow traffic only with needed the VPN servers and LAN devices&#xD;
+  - Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
+  - Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
+  - Connect other containers to it&#xD;
+  - Connect LAN devices to it&#xD;
+  - Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le&#xD;
+  - Custom VPN server side port forwarding for Private Internet Access&#xD;
+  - Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
+  - Unbound subprogram drops root privileges once launched&#xD;
+  - Can work as a Kubernetes sidecar container, thanks @rorph</Overview>
+  <Category>Security: Network:VPN Network:Privacy</Category>
+  <WebUI></WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/my-sebtech33-gluetun.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png</Icon>
+  <ExtraParams>--cap-add=NET_ADMIN --restart unless-stopped</ExtraParams>
+  <DonateText>Please consider to donate to Quentin McGaw for creating a good container</DonateText>
+  <DonateLink>https://www.paypal.me/qmcgaw</DonateLink>
+
+  <Config Name="VPN_TYPE" Target="VPN_TYPE" Default="openvpn" Mode="" Description="" Type="Variable" Display="always-hide" Required="true" Mask="false">openvpn</Config>
+  <Config Name="VPN_SERVICE_PROVIDER" Target="VPN_SERVICE_PROVIDER" Default="private internet access|cyberghost|expressvpn|fastestvpn|hidemyass|ipvanish|ivpn|mullvad|nordvpn|perfect privacy|privado|privatevpn|protonvpn|purevpn|surfshark|torguard|vpn unlimited|vyprvpn|wevpn|windscribe|custom" Mode="" Description="Choose a VPN Service Provider" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+
+  <Config Name="OPENVPN_USER" Target="OPENVPN_USER" Default="" Mode="" Description="OpenVPN Username" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="OPENVPN_PASSWORD" Target="OPENVPN_PASSWORD" Default="" Mode="" Description="OpenVPN Password" Type="Variable" Display="always-hide" Required="false" Mask="true"></Config>
+
+  <Config Name="SERVER_COUNTRIES" Target="SERVER_COUNTRIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN countries. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_REGIONS" Target="SERVER_REGIONS" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN regions. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_CITIES" Target="SERVER_CITIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_HOSTNAMES" Target="SERVER_HOSTNAMES" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_NAMES" Target="SERVER_NAMES" Default="" Mode="" Description="OPTIONAL: Single server hostname. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="ISP" Target="ISP" Default="" Mode="" Description="OPTIONAL: comma seperated list of ISP's" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="OWNED_ONLY" Target="OWNED_ONLY" Default="yes|no" Mode="" Description="OPTIONAL: If the VPN server is owned by Mullvad. It defaults to no, meaning it includes all servers. It can be set to yes" Type="Variable" Display="always-hide" Required="false" Mask="false">no</Config>
+  <Config Name="VPN_ENDPOINT_PORT TCP" Target="VPN_ENDPOINT_PORT" Default="53|80|443|1401|1195|1199|2018|5995|8443" Mode="" Description="OPTIONAL: OpenVPN endpoint port. It defaults to 443 for TCP" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="VPN_ENDPOINT_PORT UDP" Target="VPN_ENDPOINT_PORT" Default="53|80|443|1194|1195|1196|1197|1198|1300|1301|1302|1303|1400|4569|5060" Mode="" Description="OPTIONAL: OpenVPN endpoint port. It defaults to 1194 for UDP" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="VPN_ENDPOINT_PORT Custom" Target="VPN_ENDPOINT_PORT" Default="" Mode="" Description="OPTIONAL: Custom OpenVPN endpoint port." Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="PRIVATE_INTERNET_ACCESS_OPENVPN_ENCRYPTION_PRESET" Target="PRIVATE_INTERNET_ACCESS_OPENVPN_ENCRYPTION_PRESET" Default="normal|strong|none" Mode="" Description="OPTIONAL: Encryption preset, defaulting to strong, which can be set to normal, strong or none. None disables the cipher and auth OpenVPN options." Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="PRIVATE_INTERNET_ACCESS_VPN_PORT_FORWARDING" Target="PRIVATE_INTERNET_ACCESS_VPN_PORT_FORWARDING" Default="on|off" Mode="" Description="OPTIONAL: defaults to off and can be set to onto enable port forwarding on the VPN server" Type="Variable" Display="always-hide" Required="false" Mask="false">off</Config>
+  <Config Name="FREE_ONLY" Target="FREE_ONLY" Default="on|off" Mode="" Description="OPTIONAL: Filter only free tier servers by setting it to on. It defaults to off" Type="Variable" Display="always-hide" Required="false" Mask="false">off</Config>
+
+  <!--[Advanced Menu]-->
+  <Config Name="PUID" Target="PUID" Default="" Mode="" Description="User id - Default 99" Type="Variable" Display="advanced-hide" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="" Mode="" Description="Group id - Default 100" Type="Variable" Display="advanced-hide" Required="false" Mask="false">100</Config>
+  <Config Name="TIMEZONE" Target="TZ" Default="" Mode="" Description="Specify a timezone for logs times" Type="Variable" Display="advanced-hide" Required="false" Mask="false"></Config>
+  <Config Name="APPDATA" Target="/gluetun" Default="/mnt/user/appdata/gluetun-minimal" Mode="rw" Description="Where to store persistent data" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/user/appdata/gluetun-minimal</Config>
+</Container>

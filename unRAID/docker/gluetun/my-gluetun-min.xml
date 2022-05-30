@@ -7,36 +7,39 @@
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Project>https://github.com/qdm12/gluetun</Project>
-  <Overview>Lightweight swiss-knife-like VPN client to tunnel many different VPN Providers to VPN servers using Go, OpenVPN or Wireguard, iptables, DNS over TLS, ShadowSocks and an HTTP proxy&#xD;
-&#xD;
-Usage:&#xD;
-Add "--network=container:gluetun-vpn-client" to a docker container's "Extra Parameters"&#xD;
-(If you change the container name be sure to change "--network=container:GLUETUN-CONTAINER-NAME")&#xD;
-And set "Network Type" to "None&#xD;
-Then add that container WebUI port to gluetun
-&#xD;
-Features:&#xD;
-- Based on Alpine 3.15 for a small Docker image of 29MB&#xD;
-- Supports: Cyberghost, ExpressVPN, FastestVPN, HideMyAss, IPVanish, IVPN, Mullvad, NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, TorGuard, VPNUnlimited, Vyprvpn, WeVPN, Windscribe servers&#xD;
-- Supports OpenVPN for all providers listed&#xD;
-- Supports Wireguard both kernelspace and userspace&#xD;
-    - For Mullvad, Ivpn and Windscribe&#xD;
-    - For Torguard, VPN Unlimited and WeVPN using the custom provider&#xD;
-    - For custom Wireguard configurations using the custom provider&#xD;
-    - More in progress, see #134&#xD;
-- DNS over TLS baked in with service provider(s) of your choice&#xD;
-- DNS fine blocking of malicious/ads/surveillance hostnames and IP addresses, with live update every 24 hours&#xD;
-- Choose the vpn network protocol, udp or tcp&#xD;
-- Built in firewall kill switch to allow traffic only with needed the VPN servers and LAN devices&#xD;
-- Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
-- Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
-- Connect other containers to it&#xD;
-- Connect LAN devices to it&#xD;
-- Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le &#x1F386;&#xD;
-- Custom VPN server side port forwarding for Private Internet Access&#xD;
-- Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
-- Unbound subprogram drops root privileges once launched&#xD;
-- Can work as a Kubernetes sidecar container, thanks @rorph</Overview>
+  <Overview>
+  Lightweight swiss-knife-like VPN client to tunnel many different VPN Providers to VPN servers using Go, OpenVPN or Wireguard, iptables, DNS over TLS, ShadowSocks and an HTTP proxy&#xD;
+  &#xD;
+  Usage:&#xD;
+  To add another container to this container add:&#xD;
+  "--network=container:gluetun-vpn-client" to a docker container's "Extra Parameters"&#xD;
+  (If you change the container name be sure to change "--network=container:GLUETUN-CONTAINER-NAME")&#xD;
+  And set "Network Type" to "None&#xD;
+  Then add that container's WebUI port to gluetun&#xD;
+  &#xD;
+  Features:&#xD;
+  - Based on Alpine 3.15 for a small Docker image of 29MB&#xD;
+  - Supports: Cyberghost, ExpressVPN, FastestVPN, HideMyAss, IPVanish, IVPN, Mullvad, NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, TorGuard, VPNUnlimited, Vyprvpn, WeVPN, Windscribe servers&#xD;
+  - Supports OpenVPN for all providers listed&#xD;
+  - Supports Wireguard both kernelspace and userspace&#xD;
+      - For Mullvad, Ivpn and Windscribe&#xD;
+      - For Torguard, VPN Unlimited and WeVPN using the custom provider&#xD;
+      - For custom Wireguard configurations using the custom provider&#xD;
+      - More in progress, see #134&#xD;
+  - DNS over TLS baked in with service provider(s) of your choice&#xD;
+  - DNS fine blocking of malicious/ads/surveillance hostnames and IP addresses, with live update every 24 hours&#xD;
+  - Choose the vpn network protocol, udp or tcp&#xD;
+  - Built in firewall kill switch to allow traffic only with needed the VPN servers and LAN devices&#xD;
+  - Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
+  - Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
+  - Connect other containers to it&#xD;
+  - Connect LAN devices to it&#xD;
+  - Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le &#x1F386;&#xD;
+  - Custom VPN server side port forwarding for Private Internet Access&#xD;
+  - Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
+  - Unbound subprogram drops root privileges once launched&#xD;
+  - Can work as a Kubernetes sidecar container, thanks @rorph
+  </Overview>
   <Category>Security: Network:VPN Network:Privacy Status:Stable</Category>
   <Icon>https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --restart unless-stopped</ExtraParams>
