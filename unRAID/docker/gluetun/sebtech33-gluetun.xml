@@ -7,51 +7,49 @@
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Project>https://github.com/qdm12/gluetun</Project>
-  <Overview>
-    Gluetun VPN Client&#xD;
-    &#xD;
-    &#xD;
-    Is a lightweight swiss-knife-like VPN client to tunnel many different VPN Providers to VPN servers using Go, OpenVPN or Wireguard, iptables, DNS over TLS, ShadowSocks and an HTTP proxy&#xD;
-    &#xD;
-    Usage:&#xD;
-    Add "--network=container:gluetun-vpn-client" to a docker container's "Extra Parameters"&#xD;
-    (If you change the container name be sure to change "--network=container:GLUETUN-CONTAINER-NAME")&#xD;
-    And set "Network Type" to "None"&#xD;
-    Then add that container WebUI port to gluetun&#xd;
-    More info here:&#xD;
-    https://github.com/qdm12/gluetun/wiki/Port-mapping&#xD;
-    (don't use localhost if you are on a lan device. for example a laptop or desktop, just use the server ip)&#xD;
-    &#xd;
-    More info on Custom OpenVPN Configuration here:&#xD;
-    (By default the openvpn file need to be named custom.conf)&#xD;
-    https://github.com/qdm12/gluetun/wiki/OpenVPN-configuration-file&#xD;
-    &#xD;
-    For Wireguard I recommend reading this first:&#xD;
-    https://github.com/qdm12/gluetun/wiki/Wireguard&#xD;
-    &#xD;
-    Features:&#xD;
-    - Based on Alpine 3.15 for a small Docker image of 29MB&#xD;
-    - Supports: Cyberghost, ExpressVPN, FastestVPN, HideMyAss, IPVanish, IVPN, Mullvad, NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, TorGuard, VPNUnlimited, Vyprvpn, WeVPN, Windscribe servers&#xD;
-    - Supports OpenVPN for all providers listed&#xD;
-    - Supports Wireguard both kernelspace and userspace&#xD;
-      - For Mullvad, Ivpn and Windscribe&#xD;
-      - For Torguard, VPN Unlimited and WeVPN using the custom provider&#xD;
-      - For custom Wireguard configurations using the custom provider&#xD;
-      - More in progress, see #134&#xD;
-    - DNS over TLS baked in with service provider(s) of your choice&#xD;
-    - DNS fine blocking of malicious/ads/surveillance hostnames and IP addresses, with live update every 24 hours&#xD;
-    - Choose the vpn network protocol, udp or tcp&#xD;
-    - Built in firewall kill switch to allow traffic only with needed the VPN servers and LAN devices&#xD;
-    - Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
-    - Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
-    - Connect other containers to it&#xD;
-    - Connect LAN devices to it&#xD;Display
-    - Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le &#x1F386;&#xD;
-    - Custom VPN server side port forwarding for Private Internet Access&#xD;
-    - Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
-    - Unbound subprogram drops root privileges once launched&#xD;
-    - Can work as a Kubernetes sidecar container, thanks @rorph
-  </Overview>
+  <Overview>Gluetun VPN Client&#xD;
+  &#xD;
+  &#xD;
+  Is a lightweight swiss-knife-like VPN client to tunnel many different VPN Providers to VPN servers using Go, OpenVPN or Wireguard, iptables, DNS over TLS, ShadowSocks and an HTTP proxy&#xD;
+  &#xD;
+  Usage:&#xD;
+  Add "--network=container:gluetun-vpn-client" to a docker container's "Extra Parameters"&#xD;
+  (If you change the container name be sure to change "--network=container:GLUETUN-CONTAINER-NAME")&#xD;
+  And set "Network Type" to "None"&#xD;
+  Then add that container WebUI port to gluetun&#xd;
+  More info here:&#xD;
+  https://github.com/qdm12/gluetun/wiki/Port-mapping&#xD;
+  (don't use localhost if you are on a lan device. for example a laptop or desktop, just use the server ip)&#xD;
+  &#xd;
+  More info on Custom OpenVPN Configuration here:&#xD;
+  (By default the openvpn file need to be named custom.conf)&#xD;
+  https://github.com/qdm12/gluetun/wiki/OpenVPN-configuration-file&#xD;
+  &#xD;
+  For Wireguard I recommend reading this first:&#xD;
+  https://github.com/qdm12/gluetun/wiki/Wireguard&#xD;
+  &#xD;
+  Features:&#xD;
+  - Based on Alpine 3.15 for a small Docker image of 29MB&#xD;
+  - Supports: Cyberghost, ExpressVPN, FastestVPN, HideMyAss, IPVanish, IVPN, Mullvad, NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, Surfshark, TorGuard, VPNUnlimited, Vyprvpn, WeVPN, Windscribe servers&#xD;
+  - Supports OpenVPN for all providers listed&#xD;
+  - Supports Wireguard both kernelspace and userspace&#xD;
+    - For Mullvad, Ivpn and Windscribe&#xD;
+    - For Torguard, VPN Unlimited and WeVPN using the custom provider&#xD;
+    - For custom Wireguard configurations using the custom provider&#xD;
+    - More in progress, see #134&#xD;
+  - DNS over TLS baked in with service provider(s) of your choice&#xD;
+  - DNS fine blocking of malicious/ads/surveillance hostnames and IP addresses, with live update every 24 hours&#xD;
+  - Choose the vpn network protocol, udp or tcp&#xD;
+  - Built in firewall kill switch to allow traffic only with needed the VPN servers and LAN devices&#xD;
+  - Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
+  - Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
+  - Connect other containers to it&#xD;
+  - Connect LAN devices to it&#xD;Display
+  - Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le&#xD;
+  - Custom VPN server side port forwarding for Private Internet Access&#xD;
+  - Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
+  - Unbound subprogram drops root privileges once launched&#xD;
+  - Can work as a Kubernetes sidecar container, thanks @rorph</Overview>
   <Category>Security: Network:VPN Network:Privacy</Category>
   <WebUI><WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/sebtech33-gluetun.xml<TemplateURL/>
@@ -61,7 +59,6 @@
   <DonateLink>https://www.paypal.me/qmcgaw</DonateLink>
 
   <!--[Always Menu]-->
-
   <!--VPN options-->
   <Config Name="VPN_TYPE" Target="VPN_TYPE" Default="openvpn|wireguard" Mode="" Description="Default is OpenVPN, supports Wireguard. Note not all providers support Wireguard." Type="Variable" Display="always-hide" Required="true" Mask="false">openvpn</Config>
   <Config Name="VPN_SERVICE_PROVIDER" Target="VPN_SERVICE_PROVIDER" Default="private internet access|cyberghost|expressvpn|fastestvpn|hidemyass|ipvanish|ivpn|mullvad|nordvpn|perfect privacy|privado|privatevpn|protonvpn|purevpn|surfshark|torguard|vpn unlimited|vyprvpn|wevpn|windscribe|custom" Mode="" Description="Choose a VPN Service Provider" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
@@ -69,25 +66,25 @@
   <!--OpenVPN-->
   <Config Name="OPENVPN_USER" Target="OPENVPN_USER" Default="" Mode="" Description="OpenVPN Username" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
   <Config Name="OPENVPN_PASSWORD" Target="OPENVPN_PASSWORD" Default="" Mode="" Description="OpenVPN Password" Type="Variable" Display="always-hide" Required="false" Mask="true"></Config>
-  <Config Name="SERVER_REGIONS" Target="SERVER_REGIONS" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN regions. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="SERVER_COUNTRIES" Target="SERVER_COUNTRIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN countries. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="SERVER_CITIES" Target="SERVER_CITIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="SERVER_NAMES" Target="SERVER_NAMES" Default="" Mode="" Description="OPTIONAL: Single server hostname. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="SERVER_HOSTNAMES" Target="SERVER_HOSTNAMES" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="REGION" Target="REGION" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN regions. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="COUNTRY" Target="COUNTRY" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN countries. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false">Switzerland</Config>
-  <Config Name="CITY" Target="CITY" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false">Zurich</Config>
-  <Config Name="SERVER_HOSTNAME" Target="SERVER_HOSTNAME" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+  <Config Name="SERVER_REGIONS" Target="SERVER_REGIONS" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN regions. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_COUNTRIES" Target="SERVER_COUNTRIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN countries. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_CITIES" Target="SERVER_CITIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_NAMES" Target="SERVER_NAMES" Default="" Mode="" Description="OPTIONAL: Single server hostname. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_HOSTNAMES" Target="SERVER_HOSTNAMES" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="REGION" Target="REGION" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN regions. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="COUNTRY" Target="COUNTRY" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN countries. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="CITY" Target="CITY" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="SERVER_HOSTNAME" Target="SERVER_HOSTNAME" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
 
   <!--Wireguard-->
-  <Config Name="WIREGUARD_PRIVATE_KEY" Target="WIREGUARD_PRIVATE_KEY" Default="" Mode="" Description="OPTINAL: 32 bytes private key in base64 format" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="WIREGUARD_PRESHARED_KEY" Target="WIREGUARD_PRESHARED_KEY" Default="" Mode="" Description="OPTINAL: 32 bytes pre-shared key in base64 format" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="WIREGUARD_PUBLIC_KEY" Target="WIREGUARD_PUBLIC_KEY" Default="" Mode="" Description="Only for VPN_SERVICE_PROVIDER=custom and VPN_TYPE=wireguard: Wireguard server public key" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="WIREGUARD_ADDRESS" Target="WIREGUARD_ADDRESS" Default="" Mode="" Description="Wireguard IP network in the format xx.xx.xx.xx/xx. Wireguard interface address, only required if VPN_TYPE=wireguard. Note this is usually specific by user and the same for all servers." Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-  <Config Name="WIREGUARD_ENDPOINT_IP" Target="WIREGUARD_ENDPOINT_IP" Default="" Mode="" Description="Only for VPN_SERVICE_PROVIDER=custom and VPN_TYPE=wireguard: Wireguard server endpoint IP address" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+  <Config Name="WIREGUARD_PRIVATE_KEY" Target="WIREGUARD_PRIVATE_KEY" Default="" Mode="" Description="OPTINAL: 32 bytes private key in base64 format" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="WIREGUARD_PRESHARED_KEY" Target="WIREGUARD_PRESHARED_KEY" Default="" Mode="" Description="OPTINAL: 32 bytes pre-shared key in base64 format" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="WIREGUARD_PUBLIC_KEY" Target="WIREGUARD_PUBLIC_KEY" Default="" Mode="" Description="Only for VPN_SERVICE_PROVIDER=custom and VPN_TYPE=wireguard: Wireguard server public key" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="WIREGUARD_ADDRESS" Target="WIREGUARD_ADDRESS" Default="" Mode="" Description="Wireguard IP network in the format xx.xx.xx.xx/xx. Wireguard interface address, only required if VPN_TYPE=wireguard. Note this is usually specific by user and the same for all servers." Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
+  <Config Name="WIREGUARD_ENDPOINT_IP" Target="WIREGUARD_ENDPOINT_IP" Default="" Mode="" Description="Only for VPN_SERVICE_PROVIDER=custom and VPN_TYPE=wireguard: Wireguard server endpoint IP address" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
   <Config Name="WIREGUARD_ENDPOINT_PORT" Target="WIREGUARD_ENDPOINT_PORT" Default="51820" Mode="" Description="OPTIONAL (required for VPN_SERVICE_PROVIDER=custom): Wireguard custom server endpoint port to use" Type="Variable" Display="always-hide" Required="false" Mask="false">51820</Config>
   <Config Name="WIREGUARD_INTERFACE" Target="WIREGUARD_INTERFACE" Default="wg0" Mode="" Description="OPTIONAL: Specify a custom network interface name to use" Type="Variable" Display="always-hide" Required="false" Mask="false">wg0</Config>
-  <Config Name="WIREGUARD_ADDRESSES" Target="WIREGUARD_ADDRESSES" Default="" Mode="" Description="Wireguard IP network in the format xx.xx.xx.xx/xx. Wireguard interface address, only required if VPN_TYPE=wireguard. Note this is usually specific by user and the same for all servers." Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+  <Config Name="WIREGUARD_ADDRESSES" Target="WIREGUARD_ADDRESSES" Default="" Mode="" Description="Wireguard IP network in the format xx.xx.xx.xx/xx. Wireguard interface address, only required if VPN_TYPE=wireguard. Note this is usually specific by user and the same for all servers." Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
 
   <!--[Advanced Menu]-->
   <Config Name="PUID" Target="PUID" Default="" Mode="" Description="User id - Default 99" Type="Variable" Display="advanced-hide" Required="false" Mask="false">99</Config>
