@@ -71,10 +71,6 @@
   <Config Name="SERVER_CITIES" Target="SERVER_CITIES" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
   <Config Name="SERVER_NAMES" Target="SERVER_NAMES" Default="" Mode="" Description="OPTIONAL: Single server hostname. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
   <Config Name="SERVER_HOSTNAMES" Target="SERVER_HOSTNAMES" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
-  <Config Name="REGION" Target="REGION" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN regions. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
-  <Config Name="COUNTRY" Target="COUNTRY" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN countries. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
-  <Config Name="CITY" Target="CITY" Default="" Mode="" Description="OPTIONAL: Comma separated list of VPN cities. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
-  <Config Name="SERVER_HOSTNAME" Target="SERVER_HOSTNAME" Default="" Mode="" Description="OPTIONAL: Comma separated list of server hostnames. https://github.com/qdm12/gluetun/wiki" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
 
   <!--Wireguard-->
   <Config Name="WIREGUARD_PRIVATE_KEY" Target="WIREGUARD_PRIVATE_KEY" Default="" Mode="" Description="OPTINAL: 32 bytes private key in base64 format" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
