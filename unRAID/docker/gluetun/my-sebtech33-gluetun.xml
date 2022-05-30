@@ -104,8 +104,8 @@
   <Config Name="OPENVPN_CIPHERS" Target="OPENVPN_CIPHERS" Default="" Mode="" Description="OPTIONAL: Specify one or more custom ciphers to use. i.e. aes-256-gcm" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="OPENVPN_AUTH" Target="OPENVPN_AUTH" Default="" Mode="" Description="OPTIONAL: Specify a custom auth algorithm to use. i.e. sha256" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="OPENVPN_IPV6" Target="OPENVPN_IPV6" Default="on|off" Mode="" Description="OPTIONAL: Enable tunneling of IPv6 (only for Mullvad)" Type="Variable" Display="advanced-hide" Required="false" Mask="false">off</Config>
-  <Config Name="OPENVPN_MSSFIX" Target="OPENVPN_MSSFIX" Default="" Mode="" Description="OPTIONAL: Set the MSS fix parameter. 0 to 9999 - Default 0" Type="Variable" Display="always" Required="false" Mask="false">0</Config>
-  <Config Name="OPENVPN_INTERFACE" Target="OPENVPN_INTERFACE" Default="" Mode="" Description="OPTIONAL: Specify a custom network interface name to use - Default tun0" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="OPENVPN_MSSFIX" Target="OPENVPN_MSSFIX" Default="" Mode="" Description="OPTIONAL: Set the MSS fix parameter. 0 to 9999 - Default 0" Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
+  <Config Name="OPENVPN_INTERFACE" Target="OPENVPN_INTERFACE" Default="" Mode="" Description="OPTIONAL: Specify a custom network interface name to use - Default tun0" Type="Variable" Display="advanced" Required="false" Mask="false">tun0</Config>
 
   <!--Shadowsocks options-->
   <Config Name="SHADOWSOCKS" Target="SHADOWSOCKS" Default="on|off" Mode="" Description="OPTIONAL: Enable the internal Shadowsocks proxy" Type="Variable" Display="advanced-hide" Required="false" Mask="false">off</Config>
@@ -125,7 +125,7 @@
   <!--Firewall options-->
   <Config Name="FIREWALL" Target="FIREWALL" Default="on|off" Mode="" Description="Turn on or off the container built-in firewall. You should only turn off for debugging purposes." Type="Variable" Display="advanced-hide" Required="false" Mask="false">on</Config>
   <Config Name="FIREWALL_VPN_INPUT_PORTS" Target="FIREWALL_VPN_INPUT_PORTS" Default="" Mode="" Description="OPTIONAL: Comma separated list of ports to allow from the VPN server side (useful for vyprvpn port forwarding)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-  <Config Name="FIREWALL_INPUT_PORTS" Target="FIREWALL_INPUT_PORTS" Default="" Mode="" Description="OPTIONAL: Comma separated list of ports to allow through the default interface. This seems needed for Unraid containers and Kubernetes sidecars." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="FIREWALL_INPUT_PORTS" Target="FIREWALL_INPUT_PORTS" Default="" Mode="" Description="OPTIONAL: Comma separated list of ports to allow through the default interface. This seems needed for Unraid containers and Kubernetes sidecars." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="FIREWALL_DEBUG" Target="FIREWALL_DEBUG" Default="on|off" Mode="" Description="OPTIONAL: Prints every firewall related command. You should use it for debugging purposes only." Type="Variable" Display="advanced-hide" Required="false" Mask="false">off</Config>
   <Config Name="FIREWALL_OUTBOUND_SUBNETS" Target="FIREWALL_OUTBOUND_SUBNETS" Default="" Mode="" Description="OPTIONAL: Comma separated subnets that Gluetun and the containers sharing its network stack are allowed to access. This involves firewall and routing modifications. For example with FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
 
