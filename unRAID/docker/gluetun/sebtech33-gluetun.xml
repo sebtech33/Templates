@@ -6,7 +6,6 @@
   <Network>bridge</Network>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>false<Support/>
   <Project>https://github.com/qdm12/gluetun</Project>
   <Overview>
     Gluetun VPN Client&#xD;
@@ -53,12 +52,11 @@
     - Unbound subprogram drops root privileges once launched&#xD;
     - Can work as a Kubernetes sidecar container, thanks @rorph
   </Overview>
-  <Category>Security: Network:VPN Network:Privacy </Category>
-  <WebUI>false<WebUI/>
+  <Category>Security: Network:VPN Network:Privacy</Category>
+  <WebUI><WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/sebtech33-gluetun.xml<TemplateURL/>
   <Icon>https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --restart unless-stopped</ExtraParams>
-  <DateInstalled>1653012536</DateInstalled>
   <DonateText>Please consider to donate to Quentin McGaw for creating a good container<DonateText/>
   <DonateLink>https://www.paypal.me/qmcgaw</DonateLink>
 
