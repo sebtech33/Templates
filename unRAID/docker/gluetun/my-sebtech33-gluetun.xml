@@ -52,7 +52,7 @@
   - Can work as a Kubernetes sidecar container, thanks @rorph</Overview>
   <Category>Security: Network:VPN Network:Privacy</Category>
   <WebUI></WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/sebtech33-gluetun.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/my-sebtech33-gluetun.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --restart unless-stopped</ExtraParams>
   <DonateText>Please consider to donate to Quentin McGaw for creating a good container</DonateText>
