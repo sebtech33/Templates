@@ -4,10 +4,9 @@
   <Repository>qmcgaw/gluetun</Repository>
   <Registry>https://hub.docker.com/r/qmcgaw/gluetun</Registry>
   <Network>bridge</Network>
-  <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
+  <Support>false<Support/>
   <Project>https://github.com/qdm12/gluetun</Project>
   <Overview>
     Gluetun VPN Client&#xD;
@@ -55,21 +54,17 @@
     - Can work as a Kubernetes sidecar container, thanks @rorph
   </Overview>
   <Category>Security: Network:VPN Network:Privacy </Category>
-  <WebUI/>
-  <TemplateURL/>
+  <WebUI>false<WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/sebtech33/Templates/main/unRAID/docker/gluetun/sebtech33-gluetun.xml<TemplateURL/>
   <Icon>https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --restart unless-stopped</ExtraParams>
-  <PostArgs/>
-  <CPUset/>
   <DateInstalled>1653012536</DateInstalled>
-  <DonateText/>
+  <DonateText>Please consider to donate to Quentin McGaw for creating a good container<DonateText/>
   <DonateLink>https://www.paypal.me/qmcgaw</DonateLink>
-  <Requires/>
-
-  <!--Ports-->
-
 
   <!--[Always Menu]-->
+
+  <!--VPN options-->
   <Config Name="VPN_TYPE" Target="VPN_TYPE" Default="openvpn|wireguard" Mode="" Description="Default is OpenVPN, supports Wireguard. Note not all providers support Wireguard." Type="Variable" Display="always-hide" Required="true" Mask="false">openvpn</Config>
   <Config Name="VPN_SERVICE_PROVIDER" Target="VPN_SERVICE_PROVIDER" Default="private internet access|cyberghost|expressvpn|fastestvpn|hidemyass|ipvanish|ivpn|mullvad|nordvpn|perfect privacy|privado|privatevpn|protonvpn|purevpn|surfshark|torguard|vpn unlimited|vyprvpn|wevpn|windscribe|custom" Mode="" Description="Choose a VPN Service Provider" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
 
