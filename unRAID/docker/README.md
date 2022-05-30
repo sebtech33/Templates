@@ -1144,7 +1144,7 @@ This is what you think the default value should be. It allow the user to change 
 
 ### Display
 
-Here is all the options for display. This is for customazation in how the template shows when someone uses it. For example the `-hide` option hides the edit and remove buttons from the template.
+Here is all the options for display. This is for customazation in how the template shows when someone uses it. For example the `-hide` option hides the edit and remove buttons from the template when in basic view.
 
 <table>
 <tr>
@@ -1257,7 +1257,7 @@ TODO picture of unirad showing this
   Set if the value that is entered should be hidden.
 </table>
 
-### <big> Additional tags </big>
+### Additional tags
 
 Beta
 
@@ -1303,7 +1303,7 @@ Need more info on this.
 
 &nbsp;
 
-## <big> Neat tricks and tips </big>
+## Neat tricks and tips
 
 &nbsp;
 
