@@ -44,7 +44,7 @@
   - Built in Shadowsocks proxy (protocol based on SOCKS5 with an encryption layer, tunnels TCP+UDP)&#xD;
   - Built in HTTP proxy (tunnels HTTP and HTTPS through TCP)&#xD;
   - Connect other containers to it&#xD;
-  - Connect LAN devices to it&#xD;Display
+  - Connect LAN devices to it&#xD;
   - Compatible with amd64, i686 (32 bit), ARM 64 bit, ARM 32 bit v6 and v7, and even ppc64le&#xD;
   - Custom VPN server side port forwarding for Private Internet Access&#xD;
   - Possibility of split horizon DNS by selecting multiple DNS over TLS providers&#xD;
