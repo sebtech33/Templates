@@ -82,8 +82,6 @@
   <Config Name="WIREGUARD_PUBLIC_KEY" Target="WIREGUARD_PUBLIC_KEY" Default="" Mode="" Description="Only for VPN_SERVICE_PROVIDER=custom and VPN_TYPE=wireguard: Wireguard server public key" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
   <Config Name="WIREGUARD_ADDRESS" Target="WIREGUARD_ADDRESS" Default="" Mode="" Description="Wireguard IP network in the format xx.xx.xx.xx/xx. Wireguard interface address, only required if VPN_TYPE=wireguard. Note this is usually specific by user and the same for all servers." Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
   <Config Name="WIREGUARD_ENDPOINT_IP" Target="WIREGUARD_ENDPOINT_IP" Default="" Mode="" Description="Only for VPN_SERVICE_PROVIDER=custom and VPN_TYPE=wireguard: Wireguard server endpoint IP address" Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
-  <Config Name="WIREGUARD_ENDPOINT_PORT" Target="WIREGUARD_ENDPOINT_PORT" Default="51820" Mode="" Description="OPTIONAL (required for VPN_SERVICE_PROVIDER=custom): Wireguard custom server endpoint port to use" Type="Variable" Display="always-hide" Required="false" Mask="false">51820</Config>
-  <Config Name="WIREGUARD_INTERFACE" Target="WIREGUARD_INTERFACE" Default="wg0" Mode="" Description="OPTIONAL: Specify a custom network interface name to use" Type="Variable" Display="always-hide" Required="false" Mask="false">wg0</Config>
   <Config Name="WIREGUARD_ADDRESSES" Target="WIREGUARD_ADDRESSES" Default="" Mode="" Description="Wireguard IP network in the format xx.xx.xx.xx/xx. Wireguard interface address, only required if VPN_TYPE=wireguard. Note this is usually specific by user and the same for all servers." Type="Variable" Display="always-hide" Required="false" Mask="false"></Config>
 
   <!--[Advanced Menu]-->
@@ -99,13 +97,13 @@
   <Config Name="OPENVPN_VERSION" Target="OPENVPN_VERSION" Default="2.4|2.5" Mode="" Description="OPTIONAL: Set the OpenVPN version to run - Default 2.5" Type="Variable" Display="advanced-hide" Required="false" Mask="false">2.5</Config>
   <Config Name="OPENVPN_VERBOSITY" Target="OPENVPN_VERBOSITY" Default="0|1|2|3|4|5|6" Mode="" Description="OPTIONAL: OpenVPN verbosity level - Default 1" Type="Variable" Display="advanced-hide" Required="false" Mask="false">1</Config>
   <Config Name="OPENVPN_FLAGS" Target="OPENVPN_FLAGS" Default="" Mode="" Description="OPTIONAL: Space delimited OpenVPN flags to pass to openvpn" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-  <Config Name="OPENVPN_ROOT" Target="OPENVPN_ROOT" Default="yes|no" Mode="" Description="OPTIONAL: Run OpenVPN as root" Type="Variable" Display="advanced-hide" Required="false" Mask="false">no</Config>
+  <Config Name="OPENVPN_PROCESS_USER" Target="OPENVPN_PROCESS_USER" Default="yes|no" Mode="" Description="OPTIONAL: Run OpenVPN as root" Type="Variable" Display="advanced-hide" Required="false" Mask="false">no</Config>
   <Config Name="VPN_ENDPOINT_IP" Target="VPN_ENDPOINT_IP" Default="" Mode="" Description="OPTIONAL: Specify a target VPN IP address to use" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="OPENVPN_CIPHERS" Target="OPENVPN_CIPHERS" Default="" Mode="" Description="OPTIONAL: Specify one or more custom ciphers to use. i.e. aes-256-gcm" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="OPENVPN_AUTH" Target="OPENVPN_AUTH" Default="" Mode="" Description="OPTIONAL: Specify a custom auth algorithm to use. i.e. sha256" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="OPENVPN_IPV6" Target="OPENVPN_IPV6" Default="on|off" Mode="" Description="OPTIONAL: Enable tunneling of IPv6 (only for Mullvad)" Type="Variable" Display="advanced-hide" Required="false" Mask="false">off</Config>
   <Config Name="OPENVPN_MSSFIX" Target="OPENVPN_MSSFIX" Default="" Mode="" Description="OPTIONAL: Set the MSS fix parameter. 0 to 9999 - Default 0" Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
-  <Config Name="OPENVPN_INTERFACE" Target="OPENVPN_INTERFACE" Default="" Mode="" Description="OPTIONAL: Specify a custom network interface name to use - Default tun0" Type="Variable" Display="advanced" Required="false" Mask="false">tun0</Config>
+  <Config Name="VPN_INTERFACE" Target="VPN_INTERFACE" Default="" Mode="" Description="OPTIONAL: Specify a custom network interface name to use - Default tun0" Type="Variable" Display="advanced" Required="false" Mask="false">tun0</Config>
 
   <!--Shadowsocks options-->
   <Config Name="SHADOWSOCKS" Target="SHADOWSOCKS" Default="on|off" Mode="" Description="OPTIONAL: Enable the internal Shadowsocks proxy" Type="Variable" Display="advanced-hide" Required="false" Mask="false">off</Config>
